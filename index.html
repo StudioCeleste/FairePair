@@ -35,6 +35,12 @@
       --dbar: 38px;
     }
 
+    html {
+      /* Bloque le pull-to-refresh natif iOS dans les SPA */
+      overscroll-behavior-y: none;
+      height: 100%
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -47,7 +53,10 @@
       color: var(--tx);
       font-size: 15px;
       line-height: 1.6;
-      min-height: 100vh
+      min-height: 100vh;
+      padding-top: var(--dbar);
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch
     }
 
     h1,
@@ -3741,6 +3750,7 @@
         T.innerHTML = 'Connexion'; S.innerHTML = '';
         B.innerHTML = '<div class="demobox"><h5>Comptes de d&#233;monstration</h5>' +
           '<p>Pairant &#8594; <strong>laure@demo.fr</strong> / <strong>demo</strong></p>' +
+          '<p>Pair&#233;e &#8594; <strong>aminata@demo.fr</strong> / <strong>demo</strong></p>' +
           '<p>Association &#8594; <strong>asso@demo.fr</strong> / <strong>demo</strong></p></div>' +
           '<div class="fg"><label>Email</label><input type="email" id="l-em" placeholder="votre@email.fr"></div>' +
           '<div class="fg"><label>Mot de passe</label><input type="password" id="l-pw" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"></div>' +
@@ -3904,10 +3914,13 @@
         '<div class="eyebrow">Association loi 1901</div>' +
         '<h1>La comp&#233;tence n\'a pas de <em>fronti&#232;res</em></h1>' +
         '<p style="font-size:16px;line-height:1.75;margin-bottom:26px">Faire Pair met en relation des r&#233;fugi&#233;s et primo-arrivants avec des professionnels de leur m&#233;tier, pour valider leurs savoir-faire et ouvrir les portes vers l\'emploi.</p>' +
-        '<div class="ctas">' +
-        '<button class="bp" onclick="Auth.me()?go(\'hub\'):openModal(\'register\')">Je suis Pairant &#8594;</button>' +
-        '<button class="bo" onclick="openModal(\'register\')">Mon association est partenaire</button>' +
-        '</div></div>' +
+        '<div class="ctas" style="flex-direction:column; align-items:flex-start; gap:12px">' +
+        '<div style="font-weight:500; font-size:15px; color:var(--mu)">Se connecter pour tester :</div>' +
+        '<div style="display:flex; flex-wrap:wrap; gap:10px">' +
+        '<button class="bp" onclick="demoSwitch(\'paire\')" style="background:var(--pu)">Connexion Pair&#233;e</button>' +
+        '<button class="bp" onclick="demoSwitch(\'pairant\')">Connexion Pairant</button>' +
+        '<button class="bp" onclick="demoSwitch(\'asso\')" style="background:var(--am)">Connexion Association</button>' +
+        '</div></div></div>' +
         '<div class="pvc">' +
         '<div class="ptop"><div class="avm"><svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="26" fill="#FDF2DC"/><ellipse cx="26" cy="21" rx="10" ry="10.5" fill="#E8993A" opacity="0.6"/><ellipse cx="26" cy="43" rx="18" ry="13" fill="#E8993A" opacity="0.35"/></svg></div>' +
         '<div><div style="font-size:14px;font-weight:500">Infirmi&#232;re</div><div style="font-size:12px;color:var(--mu)">9 ans &#183; Soins intensifs</div></div></div>' +
