@@ -3595,7 +3595,11 @@
       navRender();
       var R = { home: rHome, hub: rHub, profile: rProfile, entretien: rEntretien, dash: rDash, create: rCreate, candidatures: rCandidatures, communaute: rCommunaute, 'entree-paire': rEntreePaire, messagerie: rMessagerie, certificat: rCertificat, parametres: rParametres, stage: rStage };
       if (R[s]) R[s]();
-      window.scrollTo(0, 0);
+      // Scroll fiable sur iOS Safari (requestAnimationFrame + double reset)
+      requestAnimationFrame(function () {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      });
     }
 
     // ═══════════════════════════════════
