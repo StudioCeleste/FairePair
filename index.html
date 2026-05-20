@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Faire Pair · Valider les compétences, ensemble</title>
+  <title>Fairepair · Valider les compétences, ensemble</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap"
@@ -39,6 +39,23 @@
       /* Bloque le pull-to-refresh natif iOS dans les SPA */
       overscroll-behavior-y: none;
       height: 100%
+    }
+
+    .fp-brand {
+      font-weight: 300 !important;
+    }
+    .fp-brand i {
+      font-style: italic !important;
+      color: var(--tl) !important;
+      font-weight: inherit !important;
+    }
+    /* Sur fond sombre (vert / noir), 'pair' doit être visible en blanc */
+    .lblk .fp-brand i,
+    .lbdg .fp-brand i,
+    footer .fp-brand i,
+    .stats-section .fp-brand i,
+    .pcta .fp-brand i {
+      color: var(--tm) !important;
     }
 
     * {
@@ -591,10 +608,10 @@
     .hero {
       max-width: 1060px;
       margin: 0 auto;
-      padding: 70px 2rem 56px;
+      padding: 80px 2rem 64px;
       display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 3.5rem;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
       align-items: center;
       position: relative;
       z-index: 1
@@ -631,7 +648,8 @@
     .ctas {
       display: flex;
       gap: 10px;
-      flex-wrap: wrap
+      flex-wrap: wrap;
+      flex-direction: row
     }
 
     .pvc {
@@ -684,7 +702,7 @@
 
     .howi {
       background: var(--wh);
-      padding: 25px;
+      padding: 28px;
       border: 1px solid var(--bd)
     }
 
@@ -708,12 +726,12 @@
     .lblk {
       background: var(--tl);
       border-radius: var(--rl);
-      padding: 40px;
+      padding: 48px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 340px;
       gap: 3rem;
       align-items: center;
-      margin: 0 2rem 75px
+      margin: 0 2rem 80px
     }
 
     .lblk h2 {
@@ -2802,32 +2820,52 @@
     /* ══════════════════════════════════════
    RESPONSIVE — TABLETTE (≤ 1024px)
 ══════════════════════════════════════ */
-    @media (max-width:1024px) {
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 2rem
-      }
-
-      .pvc {
-        max-width: 420px
-      }
-
-      .how-g {
-        grid-template-columns: 1fr
-      }
-
-      .howi:first-child {
-        border-radius: var(--r) var(--r) 0 0
-      }
-
-      .howi:last-child {
-        border-radius: 0 0 var(--r) var(--r)
-      }
-
+    /* ══════════════════════════════════════
+   RESPONSIVE — MEDIUM DESKTOP (≤ 1100px)
+══════════════════════════════════════ */
+    @media (max-width:1100px) {
       .lblk {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        margin: 0 1rem 50px
+        padding: 36px;
+        margin: 0 1.5rem 60px
+      }
+    }
+
+    /* ══════════════════════════════════════
+   RESPONSIVE — TABLETTE (≤ 1024px)
+══════════════════════════════════════ */
+    @media (max-width:1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 56px 2rem 48px
+      }
+
+      .pvc {
+        max-width: 500px
+      }
+
+      /* Sur tablette : 2 colonnes pour les étapes, plus lisible que 1 */
+      .how-g {
+        grid-template-columns: 1fr 1fr;
+        gap: 2px
+      }
+
+      .howi:first-child {
+        border-radius: var(--r) 0 0 0
+      }
+
+      .howi:nth-child(2) {
+        border-radius: 0 var(--r) 0 0
+      }
+
+      .howi:nth-child(3) {
+        border-radius: 0 0 0 var(--r)
+      }
+
+      .howi:last-child {
+        border-radius: 0 0 var(--r) 0
       }
 
       .visw {
@@ -3300,12 +3338,11 @@
   <nav class="nav">
     <div class="logo-wrap" onclick="go('home')">
       <!-- Logo image — placer logo.png à la racine du site -->
-      <img id="logo-img" src="./logo.png" alt="Faire Pair"
+      <img id="logo-img" src="./logo.png" alt="Fairepair"
         onerror="this.style.display='none';document.getElementById('logo-txt').style.display='block'">
       <div id="logo-txt" style="display:none">
-        <span
-          style="font-family:'Fraunces',serif;font-weight:500;font-size:20px;letter-spacing:-.3px;color:var(--tx)">faire<span
-            style="color:var(--tl)">pair</span></span>
+        <span class="fp-brand"
+          style="font-family:'Fraunces',serif;font-size:20px;letter-spacing:-.3px;color:var(--tx)">Faire<i>pair</i></span>
       </div>
     </div>
     <div class="nav-links" id="nav-links"></div>
@@ -3436,7 +3473,7 @@
               bio: 'Ébéniste de formation avec 18 ans de pratique en menuiserie d\'intérieur et fabrication sur mesure. J\'ai travaillé aussi bien sur des projets résidentiels haut de gamme que sur des chantiers collectifs (hôtels, restaurants).\n\nJe maîtrise l\'ensemble des machines à bois traditionnelles et numériques (CNC).',
               comp: [{ n: 'Fabrication menuiserie bois', lv: 'Expert', a: 18, p: 97 }, { n: 'Machines CNC / usinage', lv: 'Confirmé', a: 6, p: 80 }, { n: 'Lecture de plans techniques', lv: 'Expert', a: 18, p: 95 }, { n: 'Pose et finitions', lv: 'Expert', a: 15, p: 92 }, { n: 'Agencement intérieur', lv: 'Confirmé', a: 10, p: 83 }],
               ecarts: [{ t: 'info', ti: 'Normes DTU bois en vigueur en France', d: 'Les DTU encadrent les travaux de menuiserie en France. Mise à niveau rapide attendue.' }, { t: 'info', ti: 'Labels bois PEFC/FSC', d: 'Critères de traçabilité du bois souvent exigés par les donneurs d\'ordre français.' }],
-              status: 'certifie', label_by: 'Faire Pair \u2014 R\u00e9seau de professionnels b\u00e9n\u00e9voles', label_date: '2026-02-28', col: 'purple'
+              status: 'certifie', label_by: 'Fairepair \u2014 R\u00e9seau de professionnels b\u00e9n\u00e9voles', label_date: '2026-02-28', col: 'purple'
             },
             // ── Comptable
             {
@@ -3702,7 +3739,7 @@
       } else if (u && u.type === 'association') {
         notifs = [
           { txt: 'Nouveau Pairant inscrit : Karim A. appair&#233; avec Laure D.', time: 'Il y a 1 jour', lien: 'dash' },
-          { txt: 'Elena V. a obtenu son Label Faire Pair &#8212; certifi&#233; le 28 f&#233;vrier', time: 'Il y a 3 semaines', lien: 'candidatures' },
+          { txt: 'Elena V. a obtenu son Label <span class="fp-brand">Faire<i>pair</i></span> &#8212; certifi&#233; le 28 f&#233;vrier', time: 'Il y a 3 semaines', lien: 'candidatures' },
           { txt: 'Rappel : 3 profils en attente d\'appairage dans votre portefeuille', time: 'Il y a 1 semaine', lien: 'dash' }
         ];
       } else {
@@ -3913,7 +3950,7 @@
         '<div>' +
         '<div class="eyebrow">Association loi 1901</div>' +
         '<h1>La comp&#233;tence n\'a pas de <em>fronti&#232;res</em></h1>' +
-        '<p style="font-size:16px;line-height:1.75;margin-bottom:26px">Faire Pair met en relation des r&#233;fugi&#233;s et primo-arrivants avec des professionnels de leur m&#233;tier, pour valider leurs savoir-faire et ouvrir les portes vers l\'emploi.</p>' +
+        '<p style="font-size:16px;line-height:1.75;margin-bottom:26px"><span class="fp-brand">Faire<i>pair</i></span> met en relation des r&#233;fugi&#233;s et primo-arrivants avec des professionnels de leur m&#233;tier, pour valider leurs savoir-faire et ouvrir les portes vers l\'emploi.</p>' +
         '<div class="ctas" style="flex-direction:column; align-items:flex-start; gap:12px">' +
         '<div style="font-weight:500; font-size:15px; color:var(--mu)">Se connecter :</div>' +
         '<div style="display:flex; flex-wrap:wrap; gap:10px">' +
@@ -3938,23 +3975,23 @@
         '<div class="how-g">' +
         '<div class="howi"><div class="hown">01</div><h4 style="margin-bottom:7px">Candidature par une association</h4><p style="font-size:14px">Les associations partenaires g&#232;rent et anonymisent les profils. Le Pairant navigue dans le Hub filtr&#233; sur son m&#233;tier exact et choisit un candidat sans biais.</p></div>' +
         '<div class="howi"><div class="hown">02</div><h4 style="margin-bottom:7px">Entretien de validation</h4><p style="font-size:14px">Un entretien structur&#233; en visio avec le Pair&#233;. Le Pairant guide l\'&#233;change via une grille universelle : lexique m&#233;tier, m&#233;thode STAR, et &#233;carts normatifs.</p></div>' +
-        '<div class="howi"><div class="hown">03</div><h4 style="margin-bottom:7px">Le Label Faire Pair</h4><p style="font-size:14px">Apr&#232;s un entretien r&#233;ussi, le Pair&#233; re&#231;oit une certification officielle par son pair. Son profil labellis&#233; gagne en cr&#233;dibilit&#233; aupr&#232;s des recruteurs.</p></div>' +
+        '<div class="howi"><div class="hown">03</div><h4 style="margin-bottom:7px">Le Label <span class="fp-brand">Faire<i>pair</i></span></h4><p style="font-size:14px">Apr&#232;s un entretien r&#233;ussi, le Pair&#233; re&#231;oit une certification officielle par son pair. Son profil labellis&#233; gagne en cr&#233;dibilit&#233; aupr&#232;s des recruteurs.</p></div>' +
         '<div class="howi"><div class="hown">04</div><h4 style="margin-bottom:7px">Immersion (PMSMP)</h4><p style="font-size:14px">Pour finaliser l\'&#233;valuation sur le terrain, le Pairant peut g&#233;n&#233;rer directement une convention d\'immersion (PMSMP) sous l\'&#233;gide de France Travail.</p></div>' +
         '</div></div>' +
         '<div style="max-width:1060px;margin:0 auto;padding:0 2rem 75px">' +
         '<div class="lblk">' +
-        '<div><h2 style="color:#fff">Le Label Faire Pair</h2>' +
+        '<div><h2 style="color:#fff">Le Label <span class="fp-brand">Faire<i>pair</i></span></h2>' +
         '<p>Délivré par un pair du même métier &#8212; pas par un algorithme. Il prouve aux employeurs que la personne sera opérationnelle, même si son français conversationnel est encore en apprentissage.</p>' +
         '<div class="ll"><div class="li"><span style="color:#9FE1CB">&#10003;</span>Compétences validées par un professionnel du secteur</div>' +
         '<div class="li"><span style="color:#9FE1CB">&#10003;</span>Écarts normatifs identifiés et documentés</div>' +
         '<div class="li"><span style="color:#9FE1CB">&#10003;</span>Indépendant du niveau de français conversationnel</div>' +
         '<div class="li"><span style="color:#9FE1CB">&#10003;</span>CVthèque gratuite pour les entreprises partenaires</div></div></div>' +
         '<div class="lbdg"><div style="font-size:32px;margin-bottom:9px">&#9672;</div>' +
-        '<div style="font-family:\'Fraunces\',serif;font-size:18px;font-weight:500;color:#fff">Label Faire Pair</div>' +
+        '<div style="font-family:\'Fraunces\',serif;font-size:18px;font-weight:500;color:#fff">Label <span class="fp-brand">Faire<i>pair</i></span></div>' +
         '<div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:3px">Compétences validées par les pairs</div>' +
         '<div style="margin-top:13px;padding-top:13px;border-top:1px solid rgba(255,255,255,.15)">' +
         '<div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:2px">Certifi&#233; par</div>' +
-        '<div style="font-size:14px;color:rgba(255,255,255,.85);font-weight:500">Faire Pair</div>' +
+        '<div style="font-size:14px;color:rgba(255,255,255,.85);font-weight:500"><span class="fp-brand">Faire<i>pair</i></span></div>' +
         '<div style="font-size:12px;color:rgba(255,255,255,.5)">R&#233;seau de professionnels b&#233;n&#233;voles</div>' +
         '<div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:3px">2026</div>' +
         '</div></div></div></div>' +
@@ -4019,7 +4056,7 @@
       return '<footer>' +
         '<div class="footer-main">' +
         '<div class="footer-brand">' +
-        '<div class="fl">faire<span>pair</span></div>' +
+        '<div class="fl fp-brand">Faire<i>pair</i></div>' +
         '<p>Association loi 1901 de mise en relation professionnelle entre réfugiés et professionnels installés en France.</p>' +
         '<div style="margin-top:14px;display:flex;gap:8px">' +
         '<div style="width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:rgba(255,255,255,.55)">in</div>' +
@@ -4048,8 +4085,8 @@
         '</div>' +
         '</div>' +
         '<div class="footer-bottom">' +
-        '<p>© 2026 Faire Pair · Association loi 1901 · Tous droits réservés</p>' +
-        '<div class="footer-badge"><span>&#9672;</span><span>Faire Pair · fairepair.fr</span></div>' +
+        '<p>© 2026 <span class="fp-brand">Faire<i>pair</i></span> · Association loi 1901 · Tous droits réservés</p>' +
+        '<div class="footer-badge"><span>&#9672;</span><span><span class="fp-brand">Faire<i>pair</i></span> · fairepair.fr</span></div>' +
         '</div>' +
         '</footer>';
     }
@@ -4374,7 +4411,7 @@
           '<div class="prw"><span style="color:var(--mu)">Progression</span><span id="g-cnt" style="font-weight:500;color:var(--tl)">' + done + ' / ' + tot + '</span></div>' +
           '<div class="pbar"><div class="pfill" id="g-fill" style="width:' + Math.round(done / tot * 100) + '%"></div></div>' +
           '<div class="lrdy" id="g-rdy" style="' + (done === tot ? 'display:flex' : 'display:none') + '">' +
-          '<span style="font-size:18px">&#9672;</span><div><div style="font-size:12px;font-weight:500;color:#1E6B1E">Label Faire Pair &#8212; Pr&#234;t</div><div style="font-size:11px;color:#1E6B1E">Tous les crit&#232;res valid&#233;s !</div></div></div>' +
+          '<span style="font-size:18px">&#9672;</span><div><div style="font-size:12px;font-weight:500;color:#1E6B1E">Label <span class="fp-brand">Faire<i>pair</i></span> &#8212; Pr&#234;t</div><div style="font-size:11px;color:#1E6B1E">Tous les crit&#232;res valid&#233;s !</div></div></div>' +
           '</div></div>';
       } else {
         // Pairant : grille interactive avec bouton de validation
@@ -4385,7 +4422,7 @@
           '<div class="prw"><span style="color:var(--mu)">Progression</span><span id="g-cnt" style="font-weight:500;color:var(--tl)">' + done + ' / ' + tot + '</span></div>' +
           '<div class="pbar"><div class="pfill" id="g-fill" style="width:' + Math.round(done / tot * 100) + '%"></div></div>' +
           '<div class="lrdy" id="g-rdy" style="' + (done === tot ? 'display:flex' : 'display:none') + '">' +
-          '<span style="font-size:18px">&#9672;</span><div><div style="font-size:12px;font-weight:500;color:#1E6B1E">Label Faire Pair &#8212; Pr&#234;t</div><div style="font-size:11px;color:#1E6B1E">Tous les crit&#232;res valid&#233;s</div></div></div>' +
+          '<span style="font-size:18px">&#9672;</span><div><div style="font-size:12px;font-weight:500;color:#1E6B1E">Label <span class="fp-brand">Faire<i>pair</i></span> &#8212; Pr&#234;t</div><div style="font-size:11px;color:#1E6B1E">Tous les crit&#232;res valid&#233;s</div></div></div>' +
           '<button class="bp bfull" style="margin-top:10px;font-size:13px" onclick="deliverLabel(\'' + apId + '\',\'' + (pp ? pp.id : '') + '\')">Valider &amp; d&#233;livrer le Label &#8594;</button>' +
           '</div></div>';
       }
@@ -4439,9 +4476,9 @@
     function deliverLabel(apId, ppId) {
       var db = DB.get(), u = Auth.me();
       for (var i = 0; i < db.appairages.length; i++) { if (db.appairages[i].id === apId) { db.appairages[i].status = 'certifie'; db.appairages[i].done = true; break; } }
-      for (var j = 0; j < db.profils.length; j++) { if (db.profils[j].id === ppId) { db.profils[j].status = 'certifie'; db.profils[j].label_by = 'Faire Pair \u2014 R\u00e9seau de professionnels b\u00e9n\u00e9voles'; db.profils[j].label_date = new Date().toISOString().split('T')[0]; break; } }
+      for (var j = 0; j < db.profils.length; j++) { if (db.profils[j].id === ppId) { db.profils[j].status = 'certifie'; db.profils[j].label_by = 'Fairepair \u2014 R\u00e9seau de professionnels b\u00e9n\u00e9voles'; db.profils[j].label_date = new Date().toISOString().split('T')[0]; break; } }
       DB.save(db);
-      toast('Label Faire Pair d&#233;livr&#233; ! &#127881;', 'ok');
+      toast('Label <span class="fp-brand">Faire<i>pair</i></span> d&#233;livr&#233; ! &#127881;', 'ok');
       if (timerInt) { clearInterval(timerInt); timerInt = null; }
       var db2 = DB.get();
       var pp2 = null; for (var k = 0; k < db2.profils.length; k++) { if (db2.profils[k].id === ppId) { pp2 = db2.profils[k]; break; } }
@@ -4671,27 +4708,27 @@
           '<div><div style="font-size:15px;font-weight:500;margin-bottom:2px">' + p.prenom_c + ' ' + p.nom_c + '</div>' +
           '<div style="font-size:13px;color:var(--mu)">' + p.metier + ' &middot; ' + p.exp + ' ans</div>' +
           '<div style="font-size:12px;color:var(--mu);margin-top:2px">' + p.secteur + ' &middot; ' + p.pays + '</div></div></div>' +
-          '<div class="label-seal" style="margin-bottom:12px">&#9672; Label Faire Pair &middot; ' + p.label_date + '</div>' +
+          '<div class="label-seal" style="margin-bottom:12px">&#9672; Label <span class="fp-brand">Faire<i>pair</i></span> &middot; ' + p.label_date + '</div>' +
           '<div style="font-size:12px;color:var(--mu);margin-bottom:8px">Via <strong>' + p.label_by + '</strong></div>' +
           '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px">' + sks + '</div>' +
           '<div style="display:flex;gap:8px">' +
-          '<button class="bp bsm bfull" onclick="alert(\'En production : cette action ouvrirait un formulaire de prise de contact s\\\'envoyant \\u00e0 Faire Pair, qui transmet la mise en relation.\')">Prendre contact</button>' +
+          '<button class="bp bsm bfull" onclick="alert(\'En production : cette action ouvrirait un formulaire de prise de contact s\\\'envoyant \\u00e0 Fairepair, qui transmet la mise en relation.\')">Prendre contact</button>' +
           '<button class="bo bsm" onclick="go(\'profile\',\'' + p.id + '\')">Voir le profil</button>' +
           '</div></div>';
       }).join('');
       var empty = labelled.length === 0 ?
         '<div class="empty" style="padding:48px"><div class="emico">&#9672;</div>' +
         '<div style="font-weight:500;margin-bottom:6px">Aucune candidature labellis&#233;e pour l\'instant</div>' +
-        '<div style="font-size:13px">Les profils Pair&#233;s apparaissent ici apr&#232;s avoir obtenu leur Label Faire Pair lors d\'un entretien de validation.</div></div>' : '';
+        '<div style="font-size:13px">Les profils Pair&#233;s apparaissent ici apr&#232;s avoir obtenu leur Label <span class="fp-brand">Faire<i>pair</i></span> lors d\'un entretien de validation.</div></div>' : '';
       document.getElementById('s-candidatures').innerHTML =
         '<div class="cand-w">' +
         '<div style="margin-bottom:1.8rem">' +
         '<h2 style="margin-bottom:6px">CVth&#232;que Labellised</h2>' +
-        '<p style="font-size:14px">Candidats certifi&#233;s par leurs pairs professionnels &#8212; acc&#232;s gratuit. Contactez Faire Pair si vous embauchez.</p></div>' +
+        '<p style="font-size:14px">Candidats certifi&#233;s par leurs pairs professionnels &#8212; acc&#232;s gratuit. Contactez <span class="fp-brand">Faire<i>pair</i></span> si vous embauchez.</p></div>' +
         (labelled.length > 0 ? '<div class="cand-g">' + cards + '</div>' : empty) +
         '<div style="background:var(--tl);border-radius:var(--rl);padding:28px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">' +
         '<div><div style="color:#fff;font-size:16px;font-weight:500;margin-bottom:4px">Vous recrutez dans votre secteur ?</div>' +
-        '<div style="color:rgba(255,255,255,.7);font-size:13px">En recrutant un profil certifi&#233; Faire Pair, le don de succ&#232;s correspondant permet de financer nos prochains accompagnements.</div></div>' +
+        '<div style="color:rgba(255,255,255,.7);font-size:13px">En recrutant un profil certifi&#233; <span class="fp-brand">Faire<i>pair</i></span>, le don de succ&#232;s correspondant permet de financer nos prochains accompagnements.</div></div>' +
         '<button class="bwh" onclick="openModal(\'login\')">Nous contacter</button>' +
         '</div></div>';
     }
@@ -4738,7 +4775,7 @@
         '<div class="comm-w">' +
         '<div style="margin-bottom:1.8rem">' +
         '<h2 style="margin-bottom:6px">&#201;changes entre pairs</h2>' +
-        '<p style="font-size:14px">Bons plans, dons de mat&#233;riel, coups de pouce&#8230; La communaut&#233; Faire Pair s\'entraide.</p></div>' +
+        '<p style="font-size:14px">Bons plans, dons de mat&#233;riel, coups de pouce&#8230; La communaut&#233; <span class="fp-brand">Faire<i>pair</i></span> s\'entraide.</p></div>' +
         composeHtml +
         '<div class="comm-tabs">' + tabsHtml + '</div>' +
         (postsHtml || '<div class="empty"><div class="emico">&#128172;</div>Aucune publication dans cette cat&#233;gorie.</div>') +
@@ -4776,7 +4813,7 @@
           '<h4 style="margin-bottom:12px">Votre association nous contacte</h4>' +
           '<p style="font-size:13px;margin-bottom:16px">Transmettez ce message &#224; votre r&#233;f&#233;rent(e) :</p>' +
           '<div style="background:var(--bg2);border-radius:var(--r);padding:14px;font-size:13px;line-height:1.7;color:var(--tx);font-style:italic;margin-bottom:16px">' +
-          '"Bonjour, je souhaite cr&#233;er un profil Faire Pair pour la personne que j\'accompagne. Pouvez-vous contacter asso@fairepair.fr avec son pr&#233;nom, son m&#233;tier et son nombre d\'ann&#233;es d\'exp&#233;rience ?"' +
+          '"Bonjour, je souhaite cr&#233;er un profil Fairepair pour la personne que j\'accompagne. Pouvez-vous contacter asso@fairepair.fr avec son pr&#233;nom, son m\u00e9tier et son nombre d\'ann&#233;es d\'exp&#233;rience ?"' +
           '</div>' +
           '<div class="fg"><label>Email de votre association (pour suivi)</label><input type="email" placeholder="mon.asso@contact.fr"></div>' +
           '<button class="bp bfull" onclick="toast(\'Message envoy&#233; ! Votre association recevra les instructions sous 48h.\',\'ok\')">Envoyer la demande &#8594;</button>' +
@@ -4821,7 +4858,7 @@
         { done: true, active: false, ic: '&#10003;', title: 'Profil créé', sub: 'Votre fiche est visible dans le Hub de Pairs de manière anonymisée.' },
         { done: statut !== 'en_attente', active: statut === 'en_attente', ic: statut !== 'en_attente' ? '&#10003;' : '&#8942;', title: 'En attente d\'appairage', sub: statut === 'en_attente' ? 'Un Pairant de votre métier va choisir votre profil dans le Hub.' : 'Un Pairant a choisi votre profil. Entretien en cours.' },
         { done: statut === 'certifie', active: statut === 'appaire', ic: statut === 'certifie' ? '&#10003;' : '3', title: 'Entretien de validation', sub: statut === 'appaire' ? 'Entretien planifié avec votre Pairant. La traduction en direct sera disponible.' : (statut === 'certifie' ? 'Entretien réalisé avec succès.' : 'En attente de l\'appairage.') },
-        { done: statut === 'certifie', active: false, ic: '&#9672;', title: 'Label Faire Pair', sub: statut === 'certifie' ? ('Obtenu le ' + pp.label_date + ' — certifié par ' + pp.label_by) : 'Vous recevez le label après validation de vos compétences par votre pair.' }
+        { done: statut === 'certifie', active: false, ic: '&#9672;', title: 'Label <span class="fp-brand">Faire<i>pair</i></span>', sub: statut === 'certifie' ? ('Obtenu le ' + pp.label_date + ' — certifié par ' + pp.label_by) : 'Vous recevez le label après validation de vos compétences par votre pair.' }
       ];
       var stepsHtml = steps.map(function (s) {
         var cls = s.done ? 'done' : (s.active ? 'active' : 'todo');
@@ -4845,7 +4882,7 @@
       document.getElementById('s-dash').innerHTML =
         '<div class="dw">' +
         '<div style="margin-bottom:1.6rem"><h2>Bonjour, ' + u.prenom + ' &#128075;</h2>' +
-        '<p style="font-size:14px">' + u.metier + ' &middot; Pairée Faire Pair</p></div>' +
+        '<p style="font-size:14px">' + u.metier + ' &middot; Pairée <span class="fp-brand">Faire<i>pair</i></span></p></div>' +
         '<div class="d2">' +
         '<div class="card">' +
         '<div class="dstt">Mon parcours</div>' +
@@ -4984,14 +5021,14 @@
         '</div>' +
         '<div class="cert-doc">' +
         '<div class="cert-header">' +
-        '<div><div class="cert-logo">faire<span style="opacity:.7">pair</span></div>' +
+        '<div><div class="cert-logo fp-brand">Faire<i>pair</i></div>' +
         '<div style="font-size:12px;color:rgba(255,255,255,.55);margin-top:3px">fairepair.fr · Association loi 1901</div></div>' +
         '<div class="cert-seal">&#9672;</div>' +
         '</div>' +
         '<div class="cert-body">' +
         '<div style="text-align:center;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--bd)">' +
         '<div style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px">Attestation de validation professionnelle</div>' +
-        '<h2 style="font-size:28px;margin-bottom:6px">Label Faire Pair</h2>' +
+        '<h2 style="font-size:28px;margin-bottom:6px">Label <span class="fp-brand">Faire<i>pair</i></span></h2>' +
         '<div style="font-size:13px;color:var(--mu)">Certifie que les comp&#233;tences professionnelles de</div>' +
         '<div style="font-size:26px;font-family:\'Fraunces\',serif;font-weight:300;margin-top:8px;color:var(--tl)">' + pp.prenom_c + ' ' + pp.nom_c + '</div>' +
         '</div>' +
@@ -5286,7 +5323,7 @@
         '</div>' +
         '<div style="margin-top:14px;background:rgba(0,63,138,.05);border-radius:var(--r);padding:10px 14px;display:flex;align-items:center;gap:9px">' +
         '<span style="font-size:16px">&#127981;</span>' +
-        '<div style="font-size:12px;color:#003F8A"><strong>France Travail</strong> &mdash; Organisme prescripteur et garant. Conseiller r&#233;f&#233;rent : Agence Faire Pair Paris Centre</div>' +
+        '<div style="font-size:12px;color:#003F8A"><strong>France Travail</strong> &mdash; Organisme prescripteur et garant. Conseiller r&#233;f&#233;rent : Agence Fairepair Paris Centre</div>' +
         '</div></div>' +
         // Période
         '<div class="conv-section">' +
@@ -5305,7 +5342,7 @@
         '</div>' +
         // Compétences validées Label
         (pp && pp.comp.length > 0 ? '<div class="conv-section">' +
-          '<div class="conv-section-title">Comp&#233;tences valid&#233;es &mdash; Label Faire Pair</div>' +
+          '<div class="conv-section-title">Comp&#233;tences valid&#233;es &mdash; Label <span class="fp-brand">Faire<i>pair</i></span></div>' +
           '<div style="font-size:12px;color:var(--mu);margin-bottom:12px">Certifi&#233;es par un pair professionnel du m&#234;me secteur avant ce stage</div>' +
           sksHtml + '</div>' : '') +
         // Conditions
@@ -5334,7 +5371,7 @@
         // Pied de page
         '<div class="conv-ft-footer">' +
         '<div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">&#127981;</span><span style="font-size:11px;color:var(--mu)">France Travail &mdash; Dispositif PMSMP &mdash; Art. L. 5135-1 Code du travail</span></div>' +
-        '<div style="font-size:11px;color:var(--mu)">Faire Pair &middot; fairepair.fr &middot; ' + today + '</div>' +
+        '<div style="font-size:11px;color:var(--mu)">Fairepair &middot; fairepair.fr &middot; ' + today + '</div>' +
         '</div>' +
         '</div></div></div>';
     }
