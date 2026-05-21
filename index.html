@@ -3960,7 +3960,7 @@
         '</div></div></div>' +
         '<div class="pvc">' +
         '<div class="ptop"><div class="avm"><svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="26" fill="#FDF2DC"/><ellipse cx="26" cy="21" rx="10" ry="10.5" fill="#E8993A" opacity="0.6"/><ellipse cx="26" cy="43" rx="18" ry="13" fill="#E8993A" opacity="0.35"/></svg></div>' +
-        '<div><div style="font-size:14px;font-weight:500">Infirmi&#232;re</div><div style="font-size:12px;color:var(--mu)">9 ans &#183; Soins intensifs</div></div></div>' +
+        '<div><div style="font-size:14px;font-weight:500">Infirmi&#232;re</div><div style="font-size:12px;color:var(--mu)">9 ans d\'exp&#233;rience &#183; Soins intensifs</div></div></div>' +
         '<span class="badge bp2">&#9677; Profil anonymis&#233;</span>' +
         '<div class="bioq">Sp&#233;cialis&#233;e en r&#233;animation adulte, j\'ai encadr&#233; des &#233;tudiants infirmiers et r&#233;dig&#233; des protocoles de soins critiques pendant 9 ans.</div>' +
         '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px">' +
@@ -4136,7 +4136,7 @@
           return '<div class="pc" onclick="go(\'profile\',\'' + p.id + '\')">' +
             '<div class="pct"><div class="avs">' + avSvg(p, 40) + '</div>' +
             '<div><div style="font-size:13px;font-weight:500">' + p.prenom_c + ' ' + p.nom_c + '</div>' +
-            '<div style="font-size:12px;color:var(--mu)">' + p.metier + ' &middot; ' + p.exp + ' ans &middot; ' + p.pays + '</div></div>' +
+            '<div style="font-size:12px;color:var(--mu)">' + p.metier + ' &middot; ' + p.exp + ' ans d\'expérience &middot; ' + p.pays + '</div></div>' +
             '<span class="badge ' + SB[p.status || 'en_attente'] + '" style="margin-left:auto">' + SL[p.status || 'en_attente'] + '</span></div>' +
             '<div class="pcch">' + chips + '</div>' +
             '<div style="display:flex;justify-content:flex-end">' +
@@ -4178,7 +4178,7 @@
         }
         var showReal = isMatched;
         var topName = showReal ? ('<strong>' + p.prenom_c + ' ' + p.nom_c + '</strong> &mdash; ' + p.metier) : p.metier;
-        var topSub = p.exp + ' ans &middot; ' + p.secteur + (showReal ? ' &middot; <em>' + p.pays + '</em>' : '');
+        var topSub = p.exp + ' ans d\'expérience &middot; ' + p.secteur + (showReal ? ' &middot; <em>' + p.pays + '</em>' : '');
         var badgeHtml = '';
         if (showReal && isMatched) { badgeHtml = '<span class="badge bg" style="margin-bottom:8px">&#10003; Pair&#233; &mdash; identit&#233; r&#233;v&#233;l&#233;e</span><br>'; }
         else if (p.status === 'appaire' && !isMatched) { badgeHtml = '<span class="badge ba" style="margin-bottom:8px">En cours d\'appairage</span><br>'; }
@@ -4194,7 +4194,7 @@
           '<div class="pcbio">&ldquo;' + bio + '&rdquo;</div>' +
           '<div class="pcch">' + chips + '</div>' +
           '<div style="display:flex;align-items:center;justify-content:space-between">' +
-          '<span style="font-size:12px;color:var(--mu)">' + p.pays + ' &middot; ' + p.exp + ' ans</span>' +
+          '<span style="font-size:12px;color:var(--mu)">' + p.pays + ' &middot; ' + p.exp + ' ans d\'expérience</span>' +
           '<button style="font-size:12px;font-weight:500;padding:6px 13px;border-radius:20px;background:var(--tl);color:#fff;border:none;cursor:pointer" onclick="event.stopPropagation();go(\'profile\',\'' + p.id + '\')">Voir &#8594;</button>' +
           '</div></div>';
       }).join('');
@@ -4320,11 +4320,11 @@
         '<div class="ph"><div class="avl">' + avSvg(p, 70) + '</div><div>' +
         anonBadge +
         headerName +
-        '<div style="font-size:14px;color:var(--mu);margin-bottom:11px">' + p.exp + ' ans &middot; ' + p.secteur + '</div>' +
+        '<div style="font-size:14px;color:var(--mu);margin-bottom:11px">' + p.exp + ' ans d\'expérience &middot; ' + p.secteur + '</div>' +
         '<div style="display:flex;gap:7px;flex-wrap:wrap">' +
         '<span class="chip" style="background:var(--aml);color:var(--am);border-color:rgba(184,114,15,.15)">' + p.pays + '</span>' + tags +
         '</div></div></div>' +
-        '<div class="psec"><div class="slbl">Biographie narrative</div><div class="biot">' + bioPars + '</div></div>' +
+        '<div class="psec"><div class="slbl">Parcours professionnel</div><div class="biot">' + bioPars + '</div></div>' +
         '<div class="psec"><div class="slbl">Comp&#233;tences techniques</div><div class="sk-g">' + sks + '</div></div>' +
         '<div class="psec"><div class="slbl">Points d\'adaptation au contexte fran&#231;ais</div>' + gaps + '</div>' +
         ctaHtml + '</div>';
@@ -4554,7 +4554,7 @@
       var rows = profs.map(function (p) {
         return '<div class="arow" style="cursor:pointer" onclick="go(\'profile\',\'' + p.id + '\')">' +
           '<div class="avs">' + avSvg(p, 36) + '</div>' +
-          '<div style="flex:1"><div class="anm">' + p.prenom_c + ' ' + p.nom_c + ' &middot; ' + p.metier + '</div><div class="asb">' + p.pays + ' &middot; ' + p.exp + ' ans</div></div>' +
+          '<div style="flex:1"><div class="anm">' + p.prenom_c + ' ' + p.nom_c + ' &middot; ' + p.metier + '</div><div class="asb">' + p.pays + ' &middot; ' + p.exp + ' ans d\'expérience</div></div>' +
           '<span class="badge ' + SB[p.status] + '">' + SL[p.status] + '</span></div>';
       }).join('');
       document.getElementById('s-dash').innerHTML =
@@ -4706,7 +4706,7 @@
         return '<div class="cand-c">' +
           '<div class="cand-top"><div class="avl">' + avSvg(p, 60) + '</div>' +
           '<div><div style="font-size:15px;font-weight:500;margin-bottom:2px">' + p.prenom_c + ' ' + p.nom_c + '</div>' +
-          '<div style="font-size:13px;color:var(--mu)">' + p.metier + ' &middot; ' + p.exp + ' ans</div>' +
+          '<div style="font-size:13px;color:var(--mu)">' + p.metier + ' &middot; ' + p.exp + ' ans d\'expérience</div>' +
           '<div style="font-size:12px;color:var(--mu);margin-top:2px">' + p.secteur + ' &middot; ' + p.pays + '</div></div></div>' +
           '<div class="label-seal" style="margin-bottom:12px">&#9672; Label <span class="fp-brand">Faire<i>pair</i></span> &middot; ' + p.label_date + '</div>' +
           '<div style="font-size:12px;color:var(--mu);margin-bottom:8px">Via <strong>' + p.label_by + '</strong></div>' +
@@ -4867,7 +4867,7 @@
       // Mon profil aperçu
       var profileHtml = pp ? ('<div style="background:var(--bg2);border-radius:var(--r);padding:13px;margin-bottom:11px;display:flex;align-items:center;gap:11px">' +
         '<div class="avs">' + avSvg(pp, 36) + '</div>' +
-        '<div style="flex:1"><div style="font-size:13px;font-weight:500">' + pp.metier + ' &middot; ' + pp.exp + ' ans</div>' +
+        '<div style="flex:1"><div style="font-size:13px;font-weight:500">' + pp.metier + ' &middot; ' + pp.exp + ' ans d\'expérience</div>' +
         '<div style="font-size:12px;color:var(--mu)">' + pp.secteur + ' &middot; ' + pp.pays + '</div></div>' +
         '<span class="badge ' + ({ en_attente: 'bgr', appaire: 'ba', certifie: 'bg' }[pp.status] || 'bgr') + '">' + ({ en_attente: 'En attente', appaire: 'Appair&#233;', certifie: 'Labellised' }[pp.status] || '') + '</span>' +
         '</div>' +
@@ -5036,7 +5036,7 @@
         '<div>' +
         '<div class="cert-field"><label>M&#233;tier</label><div class="val">' + pp.metier + '</div></div>' +
         '<div class="cert-field"><label>Secteur</label><div class="val" style="font-size:14px">' + pp.secteur + '</div></div>' +
-        '<div class="cert-field"><label>Exp&#233;rience</label><div class="val" style="font-size:14px">' + pp.exp + ' ans</div></div>' +
+        '<div class="cert-field"><label>Exp&#233;rience</label><div class="val" style="font-size:14px">' + pp.exp + ' ans d\'expérience</div></div>' +
         '</div>' +
         '<div>' +
         '<div style="font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);margin-bottom:10px">Comp&#233;tences valid&#233;es</div>' +
