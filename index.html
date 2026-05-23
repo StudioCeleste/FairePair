@@ -4572,7 +4572,7 @@
         '<button class="bp bfull" style="margin-top:12px;font-size:13px" onclick="cDat={};cStep=1;go(\'create\')">+ Cr&#233;er un profil Pair&#233;</button></div>' +
         '<div class="card"><div class="dstt">Parcours type</div><div class="tl-list">' +
         '<div class="tli"><div class="tld dn">&#10003;</div><div><div class="tlt">Informations de base</div><div class="tlsb">M&#233;tier, exp&#233;rience, pays</div></div></div>' +
-        '<div class="tli"><div class="tld dn">&#10003;</div><div><div class="tlt">Biographie narrative</div><div class="tlsb">Parcours professionnel en prose</div></div></div>' +
+        '<div class="tli"><div class="tld dn">&#10003;</div><div><div class="tlt">Biographie narrative</div><div class="tlsb">Parcours professionnel raconté simplement</div></div></div>' +
         '<div class="tli"><div class="tld dn">&#10003;</div><div><div class="tlt">Comp&#233;tences techniques</div><div class="tlsb">Liste avec niveaux</div></div></div>' +
         '<div class="tli"><div class="tld ac"></div><div><div class="tlt">Appairage en Hub</div><div class="tlsb">S&#233;lection bas&#233;e sur les comp&#233;tences — profil anonymis&#233;</div></div></div>' +
         '<div class="tli"><div class="tld"></div><div><div class="tlt">Entretien &amp; Label</div><div class="tlsb">Validation des comp&#233;tences</div></div></div>' +
@@ -4595,7 +4595,7 @@
           '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Al-Rashid" value="' + (cDat.nom || '') + '"></div>' +
           '<div class="fg"><label>Langues parl&#233;es</label><input id="cp-lg" placeholder="Arabe, Anglais, Fran&#231;ais B1" value="' + (cDat.langues || '') + '"></div>';
       } else if (cStep === 2) {
-        fc = '<p style="font-size:13px;margin-bottom:13px;color:var(--mu)">R&#233;digez en prose le parcours &#8212; en premi&#232;re personne.</p>' +
+        fc = '<p style="font-size:13px;margin-bottom:13px;color:var(--mu)">D\u00e9crivez le parcours de mani\u00e8re simple &mdash; comme si vous le racontiez \u00e0 quelqu\'un.</p>' +
           '<div class="fg"><label>Biographie narrative (3-4 paragraphes)</label><textarea id="cp-bio" style="min-height:210px;font-size:13px;line-height:1.75" placeholder="D&#233;crivez le parcours, les r&#233;alisations, les responsabilit&#233;s&#8230;">' + (cDat.bio || '') + '</textarea></div>';
       } else {
         var existComp = cDat.comp && cDat.comp.length > 0 ? cDat.comp : [{ n: '', lv: 'Confirm&#233;', a: '' }];
