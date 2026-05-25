@@ -3426,6 +3426,22 @@
               comp: [{ n: 'Conception m\u00e9canique (CATIA V5 / SolidWorks)', lv: 'Expert', a: 11, p: 94 }, { n: 'Calcul de r\u00e9sistance des mat\u00e9riaux', lv: 'Expert', a: 9, p: 90 }, { n: 'Mise en s\u00e9rie / industrialisation', lv: 'Confirm\u00e9', a: 7, p: 80 }, { n: 'Gestion de projet technique', lv: 'Confirm\u00e9', a: 6, p: 76 }, { n: 'Cahiers des charges & normes ISO', lv: 'Confirm\u00e9', a: 8, p: 78 }],
               ecarts: [{ t: 'warn', ti: 'Normes automobiles IATF 16949 & AMDEC', d: 'Standards qualit\u00e9 automobile applicables en France. Formation courte recommand\u00e9e \u2014 sa base solide acc\u00e9l\u00e8re l\'acquisition.' }, { t: 'warn', ti: 'Logiciel PLM (Teamcenter / Enovia)', d: 'Les PLM utilis\u00e9s dans les groupes fran\u00e7ais diff\u00e8rent. Prise en main estim\u00e9e : 2-3 semaines.' }, { t: 'info', ti: 'Fran\u00e7ais technique industriel', d: 'Niveau B2 \u00e0 l\'oral. Vocabulaire m\u00e9canique ma\u00eetris\u00e9. Expression \u00e9crite en progr\u00e8s.' }],
               status: 'appaire', label_by: null, label_date: null, col: 'teal'
+            },
+            {
+              id: 'pp4', by: 'u2', prenom_c: 'Ahmad', nom_c: 'S.', metier: 'Ing\u00e9nieur civil', exp: 8, secteur: 'BTP & Construction', pays: 'Syrie',
+              langues: ['Arabe', 'Fran\u00e7ais B1'],
+              bio: 'Exp\u00e9rience en suivi de chantier et calcul de structures. 8 ans d\'exp\u00e9rience dans la construction de b\u00e2timents r\u00e9sidentiels.',
+              comp: [{ n: 'AutoCAD', lv: 'Confirm\u00e9', a: 8, p: 80 }, { n: 'Suivi de chantier', lv: 'Confirm\u00e9', a: 5, p: 80 }],
+              ecarts: [],
+              status: 'en_attente', label_by: null, label_date: null, col: 'amber'
+            },
+            {
+              id: 'pp5', by: 'u2', prenom_c: 'Youssef', nom_c: 'M.', metier: 'Ing\u00e9nieur \u00e9lectrique', exp: 5, secteur: '\u00c9nergie', pays: 'Liban',
+              langues: ['Arabe', 'Anglais B2', 'Fran\u00e7ais B2'],
+              bio: 'Sp\u00e9cialis\u00e9 dans la conception de r\u00e9seaux \u00e9lectriques basse tension et \u00e9clairage public.',
+              comp: [{ n: 'Conception BT', lv: 'Confirm\u00e9', a: 5, p: 80 }, { n: 'Dialux', lv: 'Confirm\u00e9', a: 3, p: 80 }],
+              ecarts: [],
+              status: 'en_attente', label_by: null, label_date: null, col: 'purple'
             }
           ],
           appairages: [
@@ -4445,7 +4461,11 @@
         '<div class="card"><div class="dstt">Mes appairages</div>' +
         (aps.length === 0 ? '<div class="empty"><div class="emico">&#9678;</div>Aucun appairage.<br><button class="bp bsm" style="margin-top:11px" onclick="go(\'hub\')">Explorer le Hub &#8594;</button></div>' : arows) +
         '<button class="bo bfull" style="margin-top:12px;font-size:13px" onclick="go(\'hub\')">Explorer le Hub &#8594;</button></div>' +
+        '<div style="display:flex;flex-direction:column;gap:13px">' +
+        '<div class="card"><div class="dstt">Mon profil</div>' +
+        '<div class="arow"><div class="avs"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#DFF3EC"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="14" fill="#0A5E47" font-weight="600">' + (u.prenom[0]+u.nom[0]) + '</text></svg></div><div style="flex:1"><div class="anm">' + u.prenom + ' ' + u.nom + '</div><div class="asb">' + u.metier + ' &middot; ' + u.entreprise + '</div></div></div></div>' +
         '<div class="card"><div class="dstt">Prochain entretien</div>' + nextHtml + '</div>' +
+        '</div>' +
         '</div>' + certCards + '</div>';
     }
     function rDashAs(u) {
@@ -4474,13 +4494,11 @@
         '<div class="card"><div class="dstt">Profils Pair&#233;s</div>' +
         (rows || '<div class="empty"><div class="emico">&#9678;</div>Aucun profil cr&#233;&#233;.</div>') +
         '<button class="bp bfull" style="margin-top:12px;font-size:13px" onclick="cDat={};cStep=1;go(\'create\')">+ Cr&#233;er un profil Pair&#233;</button></div>' +
-        '<div class="card"><div class="dstt">Parcours type</div><div class="tl-list">' +
-        '<div class="tli"><div class="tld dn">&#10003;</div><div><div class="tlt">Informations de base</div><div class="tlsb">M&#233;tier, exp&#233;rience, pays</div></div></div>' +
-        '<div class="tli"><div class="tld dn">&#10003;</div><div><div class="tlt">Biographie narrative</div><div class="tlsb">Parcours professionnel raconté simplement</div></div></div>' +
-        '<div class="tli"><div class="tld dn">&#10003;</div><div><div class="tlt">Comp&#233;tences techniques</div><div class="tlsb">Liste avec niveaux</div></div></div>' +
-        '<div class="tli"><div class="tld ac"></div><div><div class="tlt">Appairage en Hub</div><div class="tlsb">S&#233;lection bas&#233;e sur les comp&#233;tences — profil anonymis&#233;</div></div></div>' +
-        '<div class="tli"><div class="tld"></div><div><div class="tlt">Entretien &amp; Label</div><div class="tlsb">Validation des comp&#233;tences</div></div></div>' +
-        '</div></div></div></div>';
+        '<div class="card"><div class="dstt">Parcours type</div><ul style="padding-left:20px;font-size:13px;color:var(--tx);line-height:1.6;margin-top:10px">' +
+        '<li style="margin-bottom:8px"><strong>1. Renseignement du profil :</strong> Informations de base, biographie et comp&#233;tences.</li>' +
+        '<li style="margin-bottom:8px"><strong>2. Mise en relation :</strong> Le profil est anonymis&#233; sur le Hub en attendant qu\'un Pairant demande l\'appairage.</li>' +
+        '<li><strong>3. Appairage &amp; Label :</strong> Entretien de validation des comp&#233;tences techniques m&#233;tier.</li>' +
+        '</ul></div></div></div></div>';
     }
 
     // ═══════════════════════════════════
