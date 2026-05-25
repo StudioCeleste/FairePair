@@ -3580,7 +3580,7 @@
       document.getElementById('nav-links').innerHTML = pages.map(function (p) {
         return '<button class="nb' + (cur === p[0] ? ' on' : '') + '" onclick="go(\'' + p[0] + '\')">' + '' + p[1] + '</button>';
       }).join('');
-      var langSwitch = '<select title="Changer de langue" onchange="toast(\'La traduction de la maquette n\\\'est pas encore disponible.\', \'info\'); this.value=\'fr\'" style="background:transparent;border:1px solid var(--bd);border-radius:4px;color:var(--tx);font-size:12px;padding:3px 6px;cursor:pointer;outline:none">' +
+      var langSwitch = '<select title="Changer de langue" onchange="toast(\'Traduction compl&#232;te en cours. Participez &#224; la traduction collaborative !\', \'info\'); this.value=\'fr\'" style="background:transparent;border:1px solid var(--bd);border-radius:4px;color:var(--tx);font-size:12px;padding:3px 6px;cursor:pointer;outline:none">' +
         '<option value="fr">FR</option><option value="en">EN</option><option value="ar">AR</option></select>';
       if (u) {
         var nm = u.type === 'association' ? u.nom_asso : u.prenom + ' ' + u.nom;
@@ -3588,7 +3588,7 @@
         var hasMsg = (u.id === 'u5' || u.id === 'u3');
         document.getElementById('nav-r').innerHTML =
           langSwitch +
-          '<span style="font-size:13px;font-weight:500;margin-left:5px">' + nm + '</span>' +
+          '<span style="font-size:13px;font-weight:500;margin-left:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px" title="' + nm + '">' + nm + '</span>' +
           '<div class="notif-btn" onclick="toggleNotif()" title="Notifications">' + (hasMsg ? '<div class="notif-dot"></div>' : '') + '&#128276;</div>' +
           '<div class="av-btn" onclick="openDrop()" title="Mon compte">' + ini + '</div>' +
           '<button id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu"><span></span><span></span><span></span></button>';
