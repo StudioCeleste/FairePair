@@ -3446,22 +3446,13 @@
           ],
           conversations: [
             {
-              id: 'cv1', participants: ['u3', 'pp3_user'],
+              id: 'cv1', participants: ['u3', 'u5'],
               msgs: [
                 { from: 'u3', txt: 'Bonjour Karim, j\'ai bien reçu votre profil via France Terre d\'Asile. Je suis ingénieure mécanique chez Renault. Votre parcours en conception est remarquable — CATIA V5 et la mise en série, c\'est exactement ce que l\'on fait ici. Seriez-vous disponible pour un entretien visio cette semaine ?', ts: Date.now() - 86400000 * 2 - 3600000 * 5 },
-                { from: 'pp3', txt: 'Bonjour Sophie, merci beaucoup pour votre message. Je suis très motivé. Je suis disponible jeudi ou vendredi après-midi. Quelle heure vous conviendrait ?', ts: Date.now() - 86400000 * 2 - 3600000 * 2 },
+                { from: 'u5', txt: 'Bonjour Sophie, merci beaucoup pour votre message. Je suis très motivé. Je suis disponible jeudi ou vendredi après-midi. Quelle heure vous conviendrait ?', ts: Date.now() - 86400000 * 2 - 3600000 * 2 },
                 { from: 'u3', txt: 'Parfait, disons jeudi 15h ? Je vous envoie le lien. N\'hésitez pas à préparer 2-3 exemples concrets de projets, on utilisera la méthode STAR pour structurer l\'échange.', ts: Date.now() - 86400000 * 2 - 3600000 * 1 },
-                { from: 'pp3', txt: 'Jeudi 15h c\'est parfait. J\'ai déjà noté mes exemples : le projet d\'embrayage, la non-conformité résolue en 2019, et le démarrage de série en 2021. À jeudi !', ts: Date.now() - 86400000 * 1 },
+                { from: 'u5', txt: 'Jeudi 15h c\'est parfait. J\'ai déjà noté mes exemples : le projet d\'embrayage, la non-conformité résolue en 2019, et le démarrage de série en 2021. À jeudi !', ts: Date.now() - 86400000 * 1 },
                 { from: 'u3', txt: 'Super préparation ! Voici le lien : meet.google.com/fairepair-247. L\'entretien durera environ 45 min. À jeudi !', ts: Date.now() - 3600000 * 3 }
-              ]
-            },
-            {
-              id: 'cv2', participants: ['u5', 'u3'],
-              msgs: [
-                { from: 'u3', txt: 'Bonjour Karim ! Je suis Sophie Girard, ingénieure mécanique chez Renault. J\'ai lu votre profil avec beaucoup d\'attention, votre maîtrise de CATIA V5 et votre expérience en industrialisation sont vraiment impressionnantes.', ts: Date.now() - 86400000 * 3 },
-                { from: 'u5', txt: 'Bonjour Sophie, merci ! Je suis très content de pouvoir échanger avec quelqu\'un du même secteur. J\'ai des questions sur les certifications qualité automobiles en France — notamment IATF 16949.', ts: Date.now() - 86400000 * 3 + 3600000 },
-                { from: 'u3', txt: 'Bien sûr, je vous explique tout. L\'IATF 16949, c\'est la norme qualité automobile internationale. En France dans les grands groupes on l\'applique partout. La formation est courte — 2 jours — et avec votre base, ça ira vite.', ts: Date.now() - 86400000 * 2 },
-                { from: 'u5', txt: 'C\'est exactement le type d\'information dont j\'avais besoin, merci ! Et pour les outils PLM comme Teamcenter, vous auriez des conseils pour se former ?', ts: Date.now() - 86400000 * 1 }
               ]
             }
           ]
@@ -3651,7 +3642,7 @@
         ];
       } else if (u && u.type === 'association') {
         notifs = [
-          { txt: 'Nouveau Pairant inscrit : Karim A. appair&#233; avec Laure D.', time: 'Il y a 1 jour', lien: 'dash' },
+          { txt: 'Nouveau Pairant inscrit : Karim A. appair&#233; avec Sophie G.', time: 'Il y a 1 jour', lien: 'dash' },
           { txt: 'Elena V. a obtenu son Label <span class="fp-brand">Faire<i>pair</i></span> &#8212; certifi&#233; le 28 f&#233;vrier', time: 'Il y a 3 semaines', lien: 'candidatures' },
           { txt: 'Rappel : 3 profils en attente d\'appairage dans votre portefeuille', time: 'Il y a 1 semaine', lien: 'dash' }
         ];
@@ -3720,7 +3711,7 @@
             '<p style="text-align:center;margin-top:12px;font-size:13px">D&#233;j&#224; un compte ? <a href="#" onclick="openModal(\'login\');return false;" style="color:var(--tl);font-weight:500">Se connecter</a></p>';
         } else if (regRole === 'pairant') {
           S.innerHTML = '&#201;tape 2 &#8212; Votre profil';
-          B.innerHTML = '<div class="fr"><div class="fg"><label>Pr&#233;nom</label><input id="r-fn" placeholder="Laure"></div><div class="fg"><label>Nom</label><input id="r-ln" placeholder="Dubois"></div></div>' +
+          B.innerHTML = '<div class="fr"><div class="fg"><label>Pr&#233;nom</label><input id="r-fn" placeholder="Sophie"></div><div class="fg"><label>Nom</label><input id="r-ln" placeholder="Girard"></div></div>' +
             '<div class="fg"><label>Email</label><input type="email" id="r-em" placeholder="laure@entreprise.fr"></div>' +
             '<div class="fg"><label>Mot de passe</label><input type="password" id="r-pw" placeholder="8 caract&#232;res minimum"></div>' +
             '<div class="fg"><label>Votre m&#233;tier (exact)</label><input id="r-mt" placeholder="ex : Ing&#233;nieur m&#233;canique"></div>' +
@@ -3873,11 +3864,11 @@
         '</div></div></div>' +
         '<div class="pvc">' +
         '<div class="ptop"><div class="avm"><svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="26" fill="#FDF2DC"/><ellipse cx="26" cy="21" rx="10" ry="10.5" fill="#E8993A" opacity="0.6"/><ellipse cx="26" cy="43" rx="18" ry="13" fill="#E8993A" opacity="0.35"/></svg></div>' +
-        '<div><div style="font-size:14px;font-weight:500">Infirmi&#232;re</div><div style="font-size:12px;color:var(--mu)">9 ans d\'exp&#233;rience &#183; Soins intensifs</div></div></div>' +
+        '<div><div style="font-size:14px;font-weight:500">Ing&#233;nieur m&#233;canique</div><div style="font-size:12px;color:var(--mu)">11 ans d\'exp&#233;rience &#183; Conception automobile</div></div></div>' +
         '<span class="badge bp2">&#9677; Profil anonymis&#233;</span>' +
-        '<div class="bioq">Sp&#233;cialis&#233;e en r&#233;animation adulte, j\'ai encadr&#233; des &#233;tudiants infirmiers et r&#233;dig&#233; des protocoles de soins critiques pendant 9 ans.</div>' +
+        '<div class="bioq">Conception de pi&#232;ces d\'embrayage et de transmission pour v&#233;hicules l&#233;gers, avec 11 ans d\'exp&#233;rience. Ma&#238;trise de CATIA V5.</div>' +
         '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px">' +
-        '<span class="chip chipv">Soins intensifs</span><span class="chip chipv">Ventilation m&#233;c.</span><span class="chip">Protocoles</span><span class="chip">Encadrement</span>' +
+        '<span class="chip chipv">Conception auto</span><span class="chip chipv">CATIA V5</span><span class="chip">R&#233;sistance mat&#233;riaux</span><span class="chip">Mise en s&#233;rie</span>' +
         '</div>' +
         '<button class="bp bfull" style="margin-top:13px;font-size:13px" onclick="Auth.me()?go(\'hub\'):openModal(\'register\')">Voir les profils de mon m&#233;tier &#8594;</button>' +
         '</div></div></div>' +
@@ -3936,7 +3927,7 @@
         '<h2>La parole aux pairs</h2>' +
         '<div class="testi-g">' +
         '<div class="testi-c">' +
-        '<div class="testi-q">Laure a tout de suite compris mon parcours. Elle n\'a pas regard&#233; mon nom, mon accent. Elle a regard&#233; mes comp&#233;tences. C\'est tout ce que je demandais.</div>' +
+        '<div class="testi-q">Sophie a tout de suite compris mon parcours. Elle n\'a pas regard&#233; mon nom, mon accent. Elle a regard&#233; mes comp&#233;tences. C\'est tout ce que je demandais.</div>' +
         '<div class="testi-au">' +
         '<div class="testi-av"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#FDF2DC"/><ellipse cx="18" cy="14" rx="7" ry="7.5" fill="#E8993A" opacity="0.6"/><ellipse cx="18" cy="30" rx="13" ry="10" fill="#E8993A" opacity="0.35"/></svg></div>' +
         '<div><div class="testi-nm">Karim A.</div><div class="testi-role">Ingénieur mécanique · Syrie · Embauché chez Faurecia</div></div></div></div>' +
@@ -3944,7 +3935,7 @@
         '<div class="testi-q">J\'ai appris autant que lui pendant l\'entretien. Voir comment il résolvait les problèmes, avec d\'autres méthodes que les miennes, ça m\'a vraiment ouvert l\'esprit.</div>' +
         '<div class="testi-au">' +
         '<div class="testi-av"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#DFF3EC"/><ellipse cx="18" cy="14" rx="7" ry="7.5" fill="#0A5E47" opacity="0.6"/><ellipse cx="18" cy="30" rx="13" ry="10" fill="#0A5E47" opacity="0.35"/></svg></div>' +
-        '<div><div class="testi-nm">Laure D.</div><div class="testi-role">Infirmi&#232;re · CHU Laribois&#232;re · Pairante</div></div></div></div>' +
+        '<div><div class="testi-nm">Sophie G.</div><div class="testi-role">Ing&#233;nieure m&#233;canique · Renault · Pairante</div></div></div></div>' +
         '<div class="testi-c">' +
         '<div class="testi-q">On a créé 12 profils cette année. 9 ont obtenu leur label. 4 sont en poste. C\'est concret, c\'est mesurable, et ça change vraiment des vies.</div>' +
         '<div class="testi-au">' +
@@ -4285,7 +4276,7 @@
       var tot = Object.keys(g).length;
       var apId = ap ? ap.id : 'ap1';
       // Noms selon la perspective
-      var ptnNm = pt ? (pt.prenom + ' ' + pt.nom) : (u && !isPaire ? u.prenom + ' ' + u.nom : 'Laure Dubois');
+      var ptnNm = pt ? (pt.prenom + ' ' + pt.nom) : (u && !isPaire ? u.prenom + ' ' + u.nom : 'Sophie Girard');
       var ppNm = pp ? pp.prenom_c : (isPaire && u ? u.prenom : 'Karim');
       var ppMet = pp ? pp.metier : 'Ingénieur mécanique';
       var ppLang = pp ? (pp.langues[0] || 'AR') : 'Arabe';
@@ -4397,7 +4388,7 @@
       var pp2 = null; for (var k = 0; k < db2.profils.length; k++) { if (db2.profils[k].id === ppId) { pp2 = db2.profils[k]; break; } }
       Store.set('fp6_stage_draft', {
         pp_id: ppId, pt_id: u ? u.id : 'u3', ap_id: apId,
-        pt_nm: u ? (u.type === 'association' ? u.nom_asso : u.prenom + ' ' + u.nom) : 'Laure Dubois', pt_co: u ? (u.entreprise || 'Structure d\'accueil') : 'CHU Laribosi&#232;re',
+        pt_nm: u ? (u.type === 'association' ? u.nom_asso : u.prenom + ' ' + u.nom) : 'Sophie Girard', pt_co: u ? (u.entreprise || 'Structure d\'accueil') : 'Renault',
         pp_nm: pp2 ? pp2.prenom_c + ' ' + pp2.nom_c : '', pp_met: pp2 ? pp2.metier : '',
         duree: '2', date_deb: '', obj: pp2 ? pp2.comp.slice(0, 3).map(function (c) { return c.n; }).join('\n') : '', status: 'draft'
       });
@@ -4502,7 +4493,7 @@
       var sdots = steps.map(function (s, i) { return (i > 0 ? '<div class="fline"></div>' : '') + '<div class="fst' + (cStep === i + 1 ? ' on' : '') + '"><span>' + (i + 1) + '</span>' + s + '</div>'; }).join('');
       var fc = '';
       if (cStep === 1) {
-        fc = '<div class="fr"><div class="fg"><label>M&#233;tier (exact)</label><input id="cp-mt" placeholder="ex : Infirmier" value="' + (cDat.metier || '') + '"></div><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="cp-ex" placeholder="8" value="' + (cDat.exp || '') + '" min="1" max="50"></div></div>' +
+        fc = '<div class="fr"><div class="fg"><label>M&#233;tier (exact)</label><input id="cp-mt" placeholder="ex : Ing&#233;nieur" value="' + (cDat.metier || '') + '"></div><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="cp-ex" placeholder="8" value="' + (cDat.exp || '') + '" min="1" max="50"></div></div>' +
           '<div class="fg"><label>Secteur d\'activit&#233;</label><input id="cp-sc" placeholder="ex : Soins intensifs" value="' + (cDat.secteur || '') + '"></div>' +
           '<div class="fr"><div class="fg"><label>Pays d\'origine</label><input id="cp-py" placeholder="ex : Syrie" value="' + (cDat.pays || '') + '"></div><div class="fg"><label>Pr&#233;nom (confidentiel)</label><input id="cp-pr" placeholder="Karim" value="' + (cDat.prenom || '') + '"></div></div>' +
           '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Al-Rashid" value="' + (cDat.nom || '') + '"></div>' +
@@ -4736,7 +4727,7 @@
           '<h4 style="margin-bottom:14px">Votre profil — inscription directe</h4>' +
           '<div class="fr"><div class="fg"><label>Pr&#233;nom</label><input id="ep-fn" placeholder="Votre pr&#233;nom"></div><div class="fg"><label>Nom</label><input id="ep-ln" placeholder="Votre nom"></div></div>' +
           '<div class="fg"><label>Email</label><input type="email" id="ep-em" placeholder="votre@email.com"></div>' +
-          '<div class="fg"><label>Votre m&#233;tier</label><input id="ep-mt" placeholder="ex : Infirmier, Cuisinier, &#201;lectricien&#8230;"></div>' +
+          '<div class="fg"><label>Votre m&#233;tier</label><input id="ep-mt" placeholder="ex : Ing&#233;nieur, Cuisinier, &#201;lectricien&#8230;"></div>' +
           '<div class="fr"><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="ep-ex" placeholder="8" min="1"></div><div class="fg"><label>Pays d\'origine</label><input id="ep-py" placeholder="ex : Syrie"></div></div>' +
           '<div class="fg"><label>Niveau de fran&#231;ais</label>' +
           '<select id="ep-fr"><option>A1 — D&#233;butant</option><option>A2</option><option selected>B1 — Interm&#233;diaire</option><option>B2</option><option>C1 — Avanc&#233;</option><option>C2 — Courant</option></select></div>' +
@@ -4841,8 +4832,7 @@
       var cv = myConvs[activeCv];
       // Noms des participants
       var cvNames = {
-        'cv1': { short: 'Laure / Karim', detail: 'Laure Dubois &#8596; Karim Al-Rashid &middot; Ing&#233;nieur m&#233;canique', last: '&#192; jeudi !', unread: true },
-        'cv2': { short: 'Laure / Aminata', detail: 'Laure Dubois &#8596; Aminata Diallo &middot; Infirmi&#232;re', last: '...et pour la reconnaissance ?', unread: true }
+        'cv1': { short: 'Sophie / Karim', detail: 'Sophie Girard &#8596; Karim Al-Rashid &middot; Ing&#233;nieur m&#233;canique', last: '&#192; jeudi !', unread: true }
       };
       var convList = myConvs.map(function (c, i) {
         var nm = cvNames[c.id] || { short: 'Conversation ' + (i + 1), detail: '', last: '', unread: false };
@@ -5073,7 +5063,7 @@
         var ptU = u || (db.users.find(function (x) { return x.id === 'u3'; }));
         draft = {
           pp_id: certPp ? certPp.id : 'pp6', pt_id: ptU ? ptU.id : 'u3',
-          pt_nm: ptU ? (ptU.type === 'association' ? ptU.nom_asso : ptU.prenom + ' ' + ptU.nom) : 'Laure Dubois', pt_co: ptU ? (ptU.entreprise || 'Structure d\'accueil') : 'CHU Laribosi&#232;re',
+          pt_nm: ptU ? (ptU.type === 'association' ? ptU.nom_asso : ptU.prenom + ' ' + ptU.nom) : 'Sophie Girard', pt_co: ptU ? (ptU.entreprise || 'Structure d\'accueil') : 'Renault',
           pp_nm: certPp ? certPp.prenom_c + ' ' + certPp.nom_c : 'Viktor Szabo', pp_met: certPp ? certPp.metier : 'M&#233;nuisier / &#201;b&#233;niste',
           duree: '2', date_deb: '', obj: certPp ? certPp.comp.slice(0, 3).map(function (c) { return c.n; }).join('\n') : '', status: 'draft'
         };
