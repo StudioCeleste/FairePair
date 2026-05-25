@@ -3309,9 +3309,8 @@
     <div class="demo-roles">
       <span>Aperçu :</span>
       <button class="db-btn on" id="db-visitor" onclick="demoSwitch('visitor')">Visiteur</button>
-      <button class="db-btn" id="db-pairant" onclick="demoSwitch('pairant')">Laure</button>
-      <button class="db-btn" id="db-pierre" onclick="demoSwitch('pierre')">Pierre</button>
-      <button class="db-btn" id="db-paire" onclick="demoSwitch('paire')">Aminata</button>
+      <button class="db-btn" id="db-pairant" onclick="demoSwitch('pairant')">Sophie · Pairante</button>
+      <button class="db-btn" id="db-paire" onclick="demoSwitch('paire')">Karim · Pairé</button>
       <button class="db-btn" id="db-asso" onclick="demoSwitch('asso')">Association</button>
     </div>
     <div class="demo-deleg">
@@ -3406,7 +3405,7 @@
     var DB = {
       get: function () {
         // Version du seed — incrémenter quand les données changent
-        var SEED_VER = 'v6d';
+        var SEED_VER = 'v8a';
         if (Store.get('fp6_seed_ver') !== SEED_VER) { Store.del('fp6'); Store.del('fp6_u'); Store.set('fp6_seed_ver', SEED_VER); }
         var d = Store.get('fp6'); if (d) return d; return this.seed();
       },
@@ -3415,140 +3414,54 @@
         var d = {
           users: [
             { id: 'u2', type: 'association', email: 'asso@demo.fr', password: 'demo', nom_asso: 'France Terre d\'Asile', contact: 'Marie Lefebvre' },
-            { id: 'u3', type: 'pairant', email: 'laure@demo.fr', password: 'demo', prenom: 'Laure', nom: 'Dubois', metier: 'Infirmi\u00e8re', entreprise: 'CHU Laribosi\u00e8re' },
-            { id: 'u4', type: 'pairant', email: 'marc@demo.fr', password: 'demo', prenom: 'Marc', nom: 'Petit', metier: '\u00c9lectricien', entreprise: 'Eiffage \u00c9nergie' },
-            { id: 'u5', type: 'paire', email: 'aminata@demo.fr', password: 'demo', prenom: 'Aminata', nom: 'Diallo', metier: 'Infirmi\u00e8re', pp_id: 'pp3' },
-            { id: 'u6', type: 'pairant', email: 'pierre@demo.fr', password: 'demo', prenom: 'Pierre', nom: 'Moreau', metier: 'Agriculteur', entreprise: 'GAEC Moreau \u2014 Ferme bio Seine-et-Marne' }
+            { id: 'u3', type: 'pairant', email: 'sophie@demo.fr', password: 'demo', prenom: 'Sophie', nom: 'Girard', metier: 'Ing\u00e9nieure m\u00e9canique', entreprise: 'Renault \u2014 Centre Technique de Guyancourt' },
+            { id: 'u5', type: 'paire', email: 'karim@demo.fr', password: 'demo', prenom: 'Karim', nom: 'Al-Rashid', metier: 'Ing\u00e9nieur m\u00e9canique', pp_id: 'pp3' }
           ],
           profils: [
-            // ── Maraîcher
+            // ── Ingénieur mécanique
             {
-              id: 'pp1', by: 'u2', prenom_c: 'Moussa', nom_c: 'Konat\u00e9', metier: 'Agriculteur / Mara\u00eechage', exp: 15, secteur: 'Cultures l\u00e9gumi\u00e8res \ maraîchage biologique', pays: 'Mali',
-              langues: ['Bambara', 'Fran\u00e7ais B2'],
-              bio: 'Fils d\'une famille d\'agriculteurs du delta int\u00e9rieur du Niger, j\'ai g\u00e9r\u00e9 pendant 15 ans une exploitation de 12 hectares en cultures maraîch\u00e8res : tomates, oignons, poivrons, haricots verts. J\'ai introduit des techniques d\'irrigation goutte-\u00e0-goutte qui ont augment\u00e9 notre rendement de 40 %.\n\nJ\'ai \u00e9galement travaill\u00e9 deux saisons pour une coop\u00e9rative agricole r\u00e9gionale, o\u00f9 j\'ai supervis\u00e9 6 ouvriers et coordonn\u00e9 la logistique de r\u00e9colte pour approvisionner les march\u00e9s locaux.\n\nArriv\u00e9 en France en 2024, je cherche \u00e0 int\u00e9grer une exploitation bio o\u00f9 valoriser mon exp\u00e9rience.',
-              comp: [{ n: 'Maraîchage bio / grandes cultures', lv: 'Expert', a: 15, p: 95 }, { n: 'Irrigation goutte-\u00e0-goutte', lv: 'Expert', a: 8, p: 90 }, { n: 'Gestion de sol et fertilisation', lv: 'Confirm\u00e9', a: 12, p: 82 }, { n: 'Encadrement d\'ouvriers agricoles', lv: 'Confirm\u00e9', a: 5, p: 75 }, { n: 'Logistique et vente march\u00e9', lv: 'Interm\u00e9diaire', a: 6, p: 65 }],
-              ecarts: [{ t: 'warn', ti: 'Certiphyto (utilisation des produits phytosanitaires)', d: 'Certificat obligatoire en France. Formation de 3 jours. Ses connaissances pratiques acc\u00e9l\u00e8rent l\'obtention.' }, { t: 'warn', ti: 'Normes sanitaires UE — HACCP agricole', d: 'R\u00e9glementation phytosanitaire europ\u00e9enne \u00e0 assimiler. Cursus court disponible.' }, { t: 'info', ti: 'Fran\u00e7ais technique agricole', d: 'Vocabulaire terrain en cours d\'acquisition. D\u00e9j\u00e0 op\u00e9rationnel pour les instructions de base.' }],
+              id: 'pp3', by: 'u2', prenom_c: 'Karim', nom_c: 'Al-Rashid', metier: 'Ing\u00e9nieur m\u00e9canique', exp: 11, secteur: 'Conception m\u00e9canique & automobile', pays: 'Syrie',
+              langues: ['Arabe', 'Anglais C1', 'Fran\u00e7ais B2'],
+              bio: 'Dipl\u00f4m\u00e9 ing\u00e9nieur m\u00e9canique de l\'Universit\u00e9 de Damas en 2012, j\'ai travaill\u00e9 11 ans dans le secteur automobile syrien et r\u00e9gional. J\'ai \u00e9t\u00e9 responsable de la conception de pi\u00e8ces d\'embrayage et de transmission pour des v\u00e9hicules l\u00e9gers, en utilisant SolidWorks et CATIA V5.\n\nJ\'ai dirig\u00e9 une \u00e9quipe de 6 techniciens et pilot\u00e9 plusieurs projets de mise en s\u00e9rie. J\'ai \u00e9galement g\u00e9r\u00e9 la relation avec des fournisseurs de composants m\u00e9caniques en Turquie et en Allemagne, en r\u00e9digeant des cahiers des charges techniques en anglais.\n\nArrive en France en 2023, je cherche un poste d\'ing\u00e9nieur conception ou m\u00e9thodes dans l\'industrie automobile.',
+              comp: [{ n: 'Conception m\u00e9canique (CATIA V5 / SolidWorks)', lv: 'Expert', a: 11, p: 94 }, { n: 'Calcul de r\u00e9sistance des mat\u00e9riaux', lv: 'Expert', a: 9, p: 90 }, { n: 'Mise en s\u00e9rie / industrialisation', lv: 'Confirm\u00e9', a: 7, p: 80 }, { n: 'Gestion de projet technique', lv: 'Confirm\u00e9', a: 6, p: 76 }, { n: 'Cahiers des charges & normes ISO', lv: 'Confirm\u00e9', a: 8, p: 78 }],
+              ecarts: [{ t: 'warn', ti: 'Normes automobiles IATF 16949 & AMDEC', d: 'Standards qualit\u00e9 automobile applicables en France. Formation courte recommand\u00e9e \u2014 sa base solide acc\u00e9l\u00e8re l\'acquisition.' }, { t: 'warn', ti: 'Logiciel PLM (Teamcenter / Enovia)', d: 'Les PLM utilis\u00e9s dans les groupes fran\u00e7ais diff\u00e8rent. Prise en main estim\u00e9e : 2-3 semaines.' }, { t: 'info', ti: 'Fran\u00e7ais technique industriel', d: 'Niveau B2 \u00e0 l\'oral. Vocabulaire m\u00e9canique ma\u00eetris\u00e9. Expression \u00e9crite en progr\u00e8s.' }],
               status: 'appaire', label_by: null, label_date: null, col: 'teal'
-            },
-            // ── Agricultrice
-            {
-              id: 'pp2', by: 'u2', prenom_c: 'Fatou', nom_c: 'Bald\u00e9', metier: 'Agricultrice / Elevage', exp: 10, secteur: '\u00c9levage bovin laitier', pays: 'Guin\u00e9e',
-              langues: ['Pular', 'Fran\u00e7ais B1'],
-              bio: 'Issue d\'une famille d\'\u00e9leveurs traditionnels en Guin\u00e9e Forestière, j\'ai g\u00e9r\u00e9 un troupeau de 45 bovins laitiers pendant 10 ans, incluant la tra\u00e7abilit\u00e9 sanitaire, la conduite d\'\u00e9levage et la commercialisation du lait.\n\nJ\'ai \u00e9galement pilot\u00e9 l\'introduction d\'un programme de vaccination bovine en partenariat avec une ONG locale, couvrant 120 exploitations voisines.',
-              comp: [{ n: 'Conduite d\'\u00e9levage bovin laitier', lv: 'Expert', a: 10, p: 92 }, { n: 'Sant\u00e9 animale / vaccination', lv: 'Confirm\u00e9', a: 7, p: 80 }, { n: 'Tra\u00e7abilit\u00e9 et registres d\'\u00e9levage', lv: 'Confirm\u00e9', a: 8, p: 78 }, { n: 'Alimentation et rationnement', lv: 'Expert', a: 10, p: 90 }, { n: 'Commercialisation lait', lv: 'Interm\u00e9diaire', a: 5, p: 65 }],
-              ecarts: [{ t: 'warn', ti: 'Identification bovine officielle (BDNI)', d: 'Base de donn\u00e9es nationale d\'identification obligatoire en France. Formation courte n\u00e9cessaire.' }, { t: 'warn', ti: 'Bien-\u00eatre animal — r\u00e9glementation UE', d: 'Normes europ\u00e9ennes de bien-\u00eatre animal \u00e0 ma\u00eetniser. Adapt. pr\u00e9vue en 2-3 semaines.' }, { t: 'info', ti: 'Fran\u00e7ais B1', d: 'Vocabulaire \u00e9levage compris \u00e0 l\'oral. Expression \u00e9crite en progr\u00e8s.' }],
-              status: 'en_attente', label_by: null, label_date: null, col: 'amber'
-            },
-            // ── Infirmier
-            {
-              id: 'pp3', by: 'u2', prenom_c: 'Aminata', nom_c: 'Diallo', metier: 'Infirmière', exp: 9, secteur: 'Soins intensifs / Réanimation', pays: 'Sénégal',
-              langues: ['Wolof', 'Français C1'],
-              bio: 'Diplômée infirmière depuis 2014, j\'ai exercé 9 ans en réanimation adulte dans un centre hospitalier universitaire de Dakar. J\'ai développé une expertise en prise en charge des patients sous ventilation mécanique et en protocoles de soins critiques.\n\nJ\'ai également encadré des étudiants infirmiers en stage et participé à la rédaction de protocoles internes.',
-              comp: [{ n: 'Soins intensifs / réa', lv: 'Expert', a: 9, p: 95 }, { n: 'Ventilation mécanique', lv: 'Expert', a: 7, p: 90 }, { n: 'Protocoles de soins', lv: 'Confirmé', a: 9, p: 85 }, { n: 'Encadrement étudiants', lv: 'Confirmé', a: 4, p: 72 }, { n: 'Gestion de la douleur', lv: 'Confirmé', a: 9, p: 82 }],
-              ecarts: [{ t: 'warn', ti: 'Diplôme hors UE à faire reconnaître', d: 'Procédure de Validation des Acquis de l\'Expérience (VAE) ou équivalence via le Conseil de l\'Ordre Infirmier.' }, { t: 'warn', ti: 'Formation AFGSU2 à renouveler', d: 'Attestation de formation aux gestes et soins d\'urgence obligatoire en France.' }, { t: 'info', ti: 'Médicaments : dénominations communes différentes', d: 'Les noms commerciaux utilisés au Sénégal diffèrent des DCI françaises. Adaptation rapide attendue.' }],
-              status: 'appaire', label_by: null, label_date: null, col: 'purple'
-            },
-            // ── Électricien
-            {
-              id: 'pp4', by: 'u2', prenom_c: 'Dmitri', nom_c: 'Kovalenko', metier: 'Électricien', exp: 14, secteur: 'Génie électrique industriel', pays: 'Ukraine',
-              langues: ['Ukrainien', 'Russe', 'Français A2'],
-              bio: 'Électricien industriel avec 14 ans d\'expérience sur des sites de production : câblage d\'armoires électriques, installation de variateurs de vitesse, maintenance de moteurs et de systèmes d\'automatisme.\n\nArrivé en France en 2022, je travaille actuellement sur des chantiers en intérim mais cherche un poste fixe valorisant ma qualification.',
-              comp: [{ n: 'Câblage armoires HTA/BT', lv: 'Expert', a: 14, p: 95 }, { n: 'Automates Siemens / Schneider', lv: 'Confirmé', a: 8, p: 80 }, { n: 'Variateurs de vitesse', lv: 'Expert', a: 10, p: 90 }, { n: 'DTAO / plans électriques', lv: 'Confirmé', a: 7, p: 78 }, { n: 'Dépannage électrique', lv: 'Expert', a: 14, p: 95 }],
-              ecarts: [{ t: 'warn', ti: 'Habilitation électrique B2V/BR à passer', d: 'Obligatoire en France. Formation 2-3 jours. Ses compétences pratiques la faciliteront.' }, { t: 'warn', ti: 'Norme NF C 15-100 à maîtriser', d: 'Réglementation française des installations électriques basse tension.' }, { t: 'info', ti: 'Français A2', d: 'Lexique électricité opérationnel. Formation intensive recommandée.' }],
-              status: 'appaire', label_by: null, label_date: null, col: 'amber'
-            },
-            // ── Cuisinier
-            {
-              id: 'pp5', by: 'u2', prenom_c: 'Hamza', nom_c: 'Mansouri', metier: 'Cuisinier', exp: 7, secteur: 'Restauration gastronomique', pays: 'Algérie',
-              langues: ['Arabe', 'Français B2'],
-              bio: 'Chef de partie pendant 7 ans dans des restaurants gastronomiques d\'Alger, j\'ai travaillé sur des cuisines françaises et méditerranéennes avec des brigades de 8 à 15 personnes.\n\nJ\'ai une expérience particulière en pâtisserie de restaurant et en organisation de service pour des événements privés jusqu\'à 200 couverts.',
-              comp: [{ n: 'Cuisine française classique', lv: 'Confirmé', a: 5, p: 78 }, { n: 'Pâtisserie de restaurant', lv: 'Expert', a: 7, p: 90 }, { n: 'Gestion des stocks / FIFO', lv: 'Confirmé', a: 6, p: 75 }, { n: 'Organisation de brigade', lv: 'Confirmé', a: 4, p: 72 }, { n: 'HACCP / hygiène alimentaire', lv: 'Confirmé', a: 7, p: 85 }],
-              ecarts: [{ t: 'warn', ti: 'Certificat hygiène HACCP France', d: 'Formation obligatoire en restauration commerciale française (14h). Son expérience HACCP facilite l\'obtention.' }, { t: 'info', ti: 'Vocabulaire culinaire français', d: 'Maîtrise le vocabulaire de base. Immersion rapide attendue en brigade.' }],
-              status: 'en_attente', label_by: null, label_date: null, col: 'teal'
-            },
-            // ── Menuisier
-            {
-              id: 'pp6', by: 'u2', prenom_c: 'Viktor', nom_c: 'Szabo', metier: 'Menuisier / Ébéniste', exp: 18, secteur: 'Menuiserie bois & agencement', pays: 'Roumanie',
-              langues: ['Roumain', 'Français B1'],
-              bio: 'Ébéniste de formation avec 18 ans de pratique en menuiserie d\'intérieur et fabrication sur mesure. J\'ai travaillé aussi bien sur des projets résidentiels haut de gamme que sur des chantiers collectifs (hôtels, restaurants).\n\nJe maîtrise l\'ensemble des machines à bois traditionnelles et numériques (CNC).',
-              comp: [{ n: 'Fabrication menuiserie bois', lv: 'Expert', a: 18, p: 97 }, { n: 'Machines CNC / usinage', lv: 'Confirmé', a: 6, p: 80 }, { n: 'Lecture de plans techniques', lv: 'Expert', a: 18, p: 95 }, { n: 'Pose et finitions', lv: 'Expert', a: 15, p: 92 }, { n: 'Agencement intérieur', lv: 'Confirmé', a: 10, p: 83 }],
-              ecarts: [{ t: 'info', ti: 'Normes DTU bois en vigueur en France', d: 'Les DTU encadrent les travaux de menuiserie en France. Mise à niveau rapide attendue.' }, { t: 'info', ti: 'Labels bois PEFC/FSC', d: 'Critères de traçabilité du bois souvent exigés par les donneurs d\'ordre français.' }],
-              status: 'certifie', label_by: 'Fairepair \u2014 R\u00e9seau de professionnels b\u00e9n\u00e9voles', label_date: '2026-02-28', col: 'purple'
-            },
-            // ── Comptable
-            {
-              id: 'pp7', by: 'u2', prenom_c: 'Farida', nom_c: 'Oussedik', metier: 'Comptable', exp: 10, secteur: 'Comptabilité générale & paie', pays: 'Algérie',
-              langues: ['Arabe', 'Français C2'],
-              bio: 'Comptable généraliste avec 10 ans d\'expérience, dont 6 ans en cabinet d\'expertise comptable où j\'ai géré de manière autonome un portefeuille de 35 PME. J\'ai une expérience solide en paie, déclarations fiscales et consolidation de comptes.\n\nFluente en français, je me suis installée en France en 2024 et cherche un poste de comptable en entreprise ou cabinet.',
-              comp: [{ n: 'Comptabilité générale', lv: 'Expert', a: 10, p: 93 }, { n: 'Paie et charges sociales', lv: 'Expert', a: 8, p: 90 }, { n: 'Déclarations TVA / IS', lv: 'Confirmé', a: 10, p: 85 }, { n: 'Bilan et liasse fiscale', lv: 'Confirmé', a: 7, p: 80 }, { n: 'Excel / tableurs avancés', lv: 'Expert', a: 10, p: 92 }],
-              ecarts: [{ t: 'warn', ti: 'Logiciels français : Sage, EBP, Cegid', d: 'Les logiciels comptables utilisés en France diffèrent. Formation courte nécessaire.' }, { t: 'warn', ti: 'Droit social et convention collective française', d: 'Notions de droit du travail français à acquérir — formation recommandée.' }, { t: 'info', ti: 'Plan comptable général (PCG) français', d: 'Proche du plan algérien mais avec des différences à intégrer. Adaptation en quelques semaines.' }],
-              status: 'en_attente', label_by: null, label_date: null, col: 'gray'
             }
           ],
           appairages: [
             {
               id: 'ap1', pt_id: 'u3', pp_id: 'pp3', status: 'en_cours',
               date_d: Date.now() - 86400000 * 2,
-              date_e: new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0],
+              date_e: new Date(Date.now() + 86400000 * 4).toISOString().split('T')[0],
               grille: { lex: true, vocab: true, star1: false, star2: false, ec1: true, ec2: false }, done: false
-            },
-            {
-              id: 'ap2', pt_id: 'u4', pp_id: 'pp4', status: 'en_cours',
-              date_d: Date.now() - 86400000 * 4,
-              date_e: new Date(Date.now() + 86400000 * 1).toISOString().split('T')[0],
-              grille: { lex: true, vocab: false, star1: false, star2: false, ec1: false, ec2: false }, done: false
-            },
-            {
-              id: 'ap3', pt_id: 'u6', pp_id: 'pp1', status: 'en_cours',
-              date_d: Date.now() - 86400000 * 1,
-              date_e: new Date(Date.now() + 86400000 * 5).toISOString().split('T')[0],
-              grille: { lex: false, vocab: false, star1: false, star2: false, ec1: false, ec2: false }, done: false
             }
           ],
           posts: [
-            { id: 'po1', auteur: 'Laure D.', role: 'Pairant', metier: 'Infirmière', type: 'bon', titre: 'Formation AFGSU2 gratuite à Paris 13e', corps: 'La Croix-Rouge propose des sessions gratuites les samedis pour les soignants étrangers. Super formatrice, très bienveillante. Inscription sur leur site.', date: 'il y a 2 jours', likes: 8 },
-            { id: 'po2', auteur: 'Karim A.', role: 'Pairé', metier: 'Ingénieur mécanique', type: 'don', titre: 'Donne : livre Machines de production Dunod (2019)', corps: 'Je n\'en ai plus besoin depuis mon embauche chez Faurecia. Livre en très bon état. À récupérer sur Paris ou envoi postal partagé.', date: 'il y a 3 jours', likes: 4 },
-            { id: 'po3', auteur: 'Marc P.', role: 'Pairant', metier: 'Électricien', type: 'coup', titre: 'Cherche : quelqu\'un pour relire mon CV en français', corps: 'Je peux aider un électricien à préparer son entretien en échange d\'une relecture de son CV. Je suis pas toujours disponible mais contactez-moi.', date: 'il y a 5 jours', likes: 3 },
-            { id: 'po4', auteur: 'Marie L.', role: 'Association', metier: 'France Terre d\'Asile', type: 'bon', titre: 'Bon plan : liste de tous les organismes de VAE par métier', corps: 'On a compilé une liste de tous les organismes qui accompagnent la VAE par secteur professionnel. DM pour recevoir le document, on l\'envoie gratuitement.', date: 'il y a 1 semaine', likes: 15 },
-            { id: 'po5', auteur: 'Aminata D.', role: 'Pairée', metier: 'Infirmière', type: 'don', titre: 'Donne : scrubs neufs taille M (jamais portés)', corps: 'J\'ai reçu une paire de scrubs médicaux bleus taille M que je n\'utilise pas. À donner à un soignant en besoin. Paris 18e.', date: 'il y a 1 semaine', likes: 6 },
-            { id: 'po6', auteur: 'Marc P.', role: 'Pairant', metier: 'Électricien', type: 'bon', titre: 'Recrutement : Eiffage cherche des électriciens industriels', corps: 'Mon chef de chantier cherche 2 profils urgents, habilitation B2V appréciée mais pas bloquante. Si un pairé labellisé est intéressé, contactez-moi. Je peux faire le lien directement.', date: 'il y a 2 semaines', likes: 22 }
+            { id: 'po1', auteur: 'Sophie G.', role: 'Pairante', metier: 'Ing\u00e9nieure m\u00e9canique', type: 'bon', titre: 'Formation CATIA V5 gratuite \u00e0 l\'ENSAM Paris', corps: 'L\'\u00e9cole propose des sessions gratuites pour les ing\u00e9nieurs \u00e9trangers avec un bon niveau. Excellent formateur, contenu adapt\u00e9 au contexte industriel fran\u00e7ais. Inscription sur le site de l\'\u00e9cole.', date: 'il y a 2 jours', likes: 11 },
+            { id: 'po2', auteur: 'Karim A.', role: 'Pair\u00e9', metier: 'Ing\u00e9nieur m\u00e9canique', type: 'don', titre: 'Donne : livre M\u00e9canique des solides Dunod (2020)', corps: 'Je n\'en ai plus besoin depuis mon embauche chez Faurecia. Livre en tr\u00e8s bon \u00e9tat. \u00c0 r\u00e9cup\u00e9rer sur Paris ou envoi postal partag\u00e9.', date: 'il y a 3 jours', likes: 4 },
+            { id: 'po3', auteur: 'Sophie G.', role: 'Pairante', metier: 'Ing\u00e9nieure m\u00e9canique', type: 'coup', titre: 'Cherche : quelqu\'un pour relire un CV technique en fran\u00e7ais', corps: 'Je peux aider un ing\u00e9nieur \u00e0 pr\u00e9parer son entretien en \u00e9change d\'une relecture de son CV. Contactez-moi !', date: 'il y a 5 jours', likes: 3 },
+            { id: 'po4', auteur: 'Marie L.', role: 'Association', metier: 'France Terre d\'Asile', type: 'bon', titre: 'Bon plan : liste de tous les organismes de VAE par m\u00e9tier', corps: 'On a compil\u00e9 une liste de tous les organismes qui accompagnent la VAE par secteur professionnel. DM pour recevoir le document, on l\'envoie gratuitement.', date: 'il y a 1 semaine', likes: 15 },
+            { id: 'po5', auteur: 'Karim A.', role: 'Pair\u00e9', metier: 'Ing\u00e9nieur m\u00e9canique', type: 'don', titre: 'Donne : livre Thermodynamique appliqu\u00e9e (2018)', corps: 'Je donne ce livre de thermo appliqu\u00e9e, parfait pour les ing\u00e9nieurs qui pr\u00e9parent un entretien dans le secteur \u00e9nerg\u00e9tique. Paris 11e.', date: 'il y a 1 semaine', likes: 6 },
+            { id: 'po6', auteur: 'Sophie G.', role: 'Pairante', metier: 'Ing\u00e9nieure m\u00e9canique', type: 'bon', titre: 'Recrutement : Renault cherche des ing\u00e9nieurs conception', corps: 'Mon \u00e9quipe cherche 2 profils urgents, CATIA V5 requis. Si un pair\u00e9 labellis\u00e9 est int\u00e9ress\u00e9, contactez-moi. Je peux faire le lien directement.', date: 'il y a 2 semaines', likes: 27 }
           ],
           conversations: [
             {
-              id: 'cv1', participants: ['u3', 'pp1_user'],
+              id: 'cv1', participants: ['u3', 'pp3_user'],
               msgs: [
-                { from: 'u3', txt: 'Bonjour Karim, j\'ai bien reçu votre profil via France Terre d\'Asile. Je suis coordinatrice RH spécialisée dans l\'insertion des professionnels étrangers. Votre parcours est très solide. Seriez-vous disponible pour un entretien visio cette semaine ?', ts: Date.now() - 86400000 * 2 - 3600000 * 5 },
-                { from: 'pp1', txt: 'Bonjour Laure, merci beaucoup pour votre message. Je suis très motivé. Je suis disponible jeudi ou vendredi après-midi. Quelle heure vous conviendrait ?', ts: Date.now() - 86400000 * 2 - 3600000 * 2 },
+                { from: 'u3', txt: 'Bonjour Karim, j\'ai bien reçu votre profil via France Terre d\'Asile. Je suis ingénieure mécanique chez Renault. Votre parcours en conception est remarquable — CATIA V5 et la mise en série, c\'est exactement ce que l\'on fait ici. Seriez-vous disponible pour un entretien visio cette semaine ?', ts: Date.now() - 86400000 * 2 - 3600000 * 5 },
+                { from: 'pp3', txt: 'Bonjour Sophie, merci beaucoup pour votre message. Je suis très motivé. Je suis disponible jeudi ou vendredi après-midi. Quelle heure vous conviendrait ?', ts: Date.now() - 86400000 * 2 - 3600000 * 2 },
                 { from: 'u3', txt: 'Parfait, disons jeudi 15h ? Je vous envoie le lien. N\'hésitez pas à préparer 2-3 exemples concrets de projets, on utilisera la méthode STAR pour structurer l\'échange.', ts: Date.now() - 86400000 * 2 - 3600000 * 1 },
-                { from: 'pp1', txt: 'Jeudi 15h c\'est parfait. J\'ai déjà noté mes exemples : le projet d\'embrayage, la non-conformité qu\'on a résolue en 2019, et le démarrage de série en 2021. À jeudi !', ts: Date.now() - 86400000 * 1 },
-                { from: 'u3', txt: 'Super préparation ! Voici le lien : meet.google.com/fairepair-247. L\'entretien durera environ 45 min. La traduction automatique sera activée si besoin. À jeudi !', ts: Date.now() - 3600000 * 3 }
+                { from: 'pp3', txt: 'Jeudi 15h c\'est parfait. J\'ai déjà noté mes exemples : le projet d\'embrayage, la non-conformité résolue en 2019, et le démarrage de série en 2021. À jeudi !', ts: Date.now() - 86400000 * 1 },
+                { from: 'u3', txt: 'Super préparation ! Voici le lien : meet.google.com/fairepair-247. L\'entretien durera environ 45 min. À jeudi !', ts: Date.now() - 3600000 * 3 }
               ]
             },
             {
               id: 'cv2', participants: ['u5', 'u3'],
               msgs: [
-                { from: 'u3', txt: 'Bonjour Aminata ! Je suis Laure Dubois, infirmière de réanimation au CHU Lariboisière. J\'ai lu votre profil avec beaucoup d\'attention, votre expérience en ventilation mécanique est vraiment solide.', ts: Date.now() - 86400000 * 3 },
-                { from: 'u5', txt: 'Bonjour Laure, merci ! Je suis très contente de pouvoir échanger avec quelqu\'un du même secteur. J\'ai beaucoup de questions sur les certifications spécifiques en France.', ts: Date.now() - 86400000 * 3 + 3600000 },
-                { from: 'u3', txt: 'Bien sûr, je vous explique tout. Le principal point c\'est l\'AFGSU2 — c\'est une formation obligatoire de 2 jours qui certifie les gestes d\'urgence. La Croix-Rouge en propose souvent gratuitement.', ts: Date.now() - 86400000 * 2 },
-                { from: 'u5', txt: 'C\'est exactement le type d\'information dont j\'avais besoin, merci ! Et pour la reconnaissance de mon diplôme sénégalais, vous avez une idée de la procédure ?', ts: Date.now() - 86400000 * 1 }
-              ]
-            },
-            {
-              id: 'cv3', participants: ['u4', 'pp4_user'],
-              msgs: [
-                { from: 'u4', txt: 'Bonjour Dmitri, je suis Marc Petit, \u00e9lectricien industriel chez Eiffage \u00c9nergie. J\'ai vu votre profil dans le Hub \u2014 votre exp\u00e9rience sur les armoires HTA/BT est impressionnante, exactement ce qu\'on fait sur nos chantiers.', ts: Date.now() - 86400000 * 4 },
-                { from: 'pp4', txt: 'Bonjour Marc, merci pour votre message. Je suis tr\u00e8s int\u00e9ress\u00e9. J\'ai travaill\u00e9 14 ans sur des sites similaires en Ukraine. Mes principales questions concernent les normes fran\u00e7aises NF C 15-100 et l\'habilitation \u00e9lectrique.', ts: Date.now() - 86400000 * 4 + 3600000 * 2 },
-                { from: 'u4', txt: 'Parfait, c\'est exactement ce qu\'on va couvrir dans l\'entretien. L\'habilitation B2V, \u00e7a prend 2-3 jours de formation \u2014 avec votre niveau technique vous l\'aurez sans probl\u00e8me. Je vous propose demain \u00e0 14h ?', ts: Date.now() - 86400000 * 3 },
-                { from: 'pp4', txt: 'Demain 14h c\'est parfait pour moi. Je pr\u00e9pare mes exemples de chantiers. \u00c0 demain !', ts: Date.now() - 86400000 * 2 }
-              ]
-            },
-            {
-              id: 'cv4', participants: ['u6', 'pp1_user'],
-              msgs: [
-                { from: 'u6', txt: 'Bonjour Moussa ! Je suis Pierre Moreau, agriculteur bio en Seine-et-Marne. J\'ai lu votre parcours avec beaucoup d\'int\u00e9r\u00eat \u2014 votre ma\u00eetrise du maraîchage et des techniques d\'irrigation est impressionnante.', ts: Date.now() - 86400000 * 1 - 3600000 * 6 },
-                { from: 'pp1', txt: 'Bonjour Pierre, merci pour votre message. Je suis tr\u00e8s content de pouvoir \u00e9changer avec un agriculteur fran\u00e7ais. J\'ai beaucoup de questions sur le Certiphyto et les normes sanitaires ici.', ts: Date.now() - 86400000 * 1 - 3600000 * 3 },
-                { from: 'u6', txt: 'Pas de probl\u00e8me, je vais tout vous expliquer. Le Certiphyto, c\'est 3 jours de formation \u2014 avec votre exp\u00e9rience pratique vous l\'aurez facilement. On peut en parler lors de notre entretien ?', ts: Date.now() - 3600000 * 5 },
-                { from: 'pp1', txt: 'Oui, avec plaisir ! Je suis disponible cette semaine. Votre ferme bio m\'int\u00e9resse beaucoup, c\'est exactement le type d\'exploitation o\u00f9 je veux travailler.', ts: Date.now() - 3600000 * 2 }
+                { from: 'u3', txt: 'Bonjour Karim ! Je suis Sophie Girard, ingénieure mécanique chez Renault. J\'ai lu votre profil avec beaucoup d\'attention, votre maîtrise de CATIA V5 et votre expérience en industrialisation sont vraiment impressionnantes.', ts: Date.now() - 86400000 * 3 },
+                { from: 'u5', txt: 'Bonjour Sophie, merci ! Je suis très content de pouvoir échanger avec quelqu\'un du même secteur. J\'ai des questions sur les certifications qualité automobiles en France — notamment IATF 16949.', ts: Date.now() - 86400000 * 3 + 3600000 },
+                { from: 'u3', txt: 'Bien sûr, je vous explique tout. L\'IATF 16949, c\'est la norme qualité automobile internationale. En France dans les grands groupes on l\'applique partout. La formation est courte — 2 jours — et avec votre base, ça ira vite.', ts: Date.now() - 86400000 * 2 },
+                { from: 'u5', txt: 'C\'est exactement le type d\'information dont j\'avais besoin, merci ! Et pour les outils PLM comme Teamcenter, vous auriez des conseils pour se former ?', ts: Date.now() - 86400000 * 1 }
               ]
             }
           ]
@@ -3599,20 +3512,20 @@
 
     function demoSwitch(role) {
       Auth.logout();
-      ['visitor', 'pairant', 'pierre', 'paire', 'asso'].forEach(function (r) {
+      ['visitor', 'pairant', 'paire', 'asso'].forEach(function (r) {
         var el = document.getElementById('db-' + r); if (el) el.classList.remove('on');
       });
       var btn = document.getElementById('db-' + role); if (btn) btn.classList.add('on');
       if (role === 'pairant') {
+        // Sophie Girard — Ing\u00e9nieure m\u00e9canique, Renault (pairante)
         var db = DB.get(); var u = db.users.find(function (x) { return x.id === 'u3'; });
-        Store.set('fp6_u', u); go('hub'); toast('Connect\u00e9e en tant que Laure Dubois \u2014 Infirmi\u00e8re Pairante', 'ok');
-      } else if (role === 'pierre') {
-        var dbP = DB.get(); var uP = dbP.users.find(function (x) { return x.id === 'u6'; });
-        Store.set('fp6_u', uP); go('hub'); toast('Connect\u00e9 en tant que Pierre Moreau \u2014 Agriculteur Pairant', 'ok');
+        Store.set('fp6_u', u); go('hub'); toast('Connect\u00e9e en tant que Sophie Girard \u2014 Pairante · Renault', 'ok');
       } else if (role === 'paire') {
+        // Karim Al-Rashid — Ing\u00e9nieur m\u00e9canique (pair\u00e9)
         var db2 = DB.get(); var u2 = db2.users.find(function (x) { return x.id === 'u5'; });
-        Store.set('fp6_u', u2); go('dash'); toast('Connect\u00e9e en tant qu\'Aminata Diallo \u2014 Pair\u00e9e', 'ok');
+        Store.set('fp6_u', u2); go('dash'); toast('Connect\u00e9 en tant que Karim Al-Rashid \u2014 Pair\u00e9', 'ok');
       } else if (role === 'asso') {
+        // France Terre d\'Asile — association partenaire
         var db3 = DB.get(); var u3 = db3.users.find(function (x) { return x.id === 'u2'; });
         Store.set('fp6_u', u3); go('dash'); toast('Connect\u00e9 en tant que France Terre d\'Asile', 'ok');
       } else {
@@ -3726,15 +3639,15 @@
       var notifs = [];
       if (u && u.type === 'pairant') {
         notifs = [
-          { txt: 'Karim A. a r&#233;pondu &#224; votre message &#8212; entretien confirm&#233; jeudi 15h', time: 'Il y a 3 heures', lien: 'messagerie' },
-          { txt: 'Nouvel appairage disponible : profil Ing&#233;nieur m&#233;canique &#8212; 8 ans, secteur automobile', time: 'Il y a 1 jour', lien: 'hub' },
-          { txt: '3 nouveaux profils infirmi&#232;res ont &#233;t&#233; ajout&#233;s cette semaine', time: 'Il y a 3 jours', lien: 'hub' }
+          { txt: 'Karim Al-Rashid a r&#233;pondu &#224; votre message &#8212; entretien confirm&#233; jeudi 15h', time: 'Il y a 3 heures', lien: 'messagerie' },
+          { txt: 'Nouvel appairage disponible : profil Ing&#233;nieur m&#233;canique &#8212; 11 ans, secteur automobile', time: 'Il y a 1 jour', lien: 'hub' },
+          { txt: 'Karim a compl&#233;t&#233; son profil &#8212; toutes les comp&#233;tences sont renseigni&#233;es', time: 'Il y a 3 jours', lien: 'hub' }
         ];
       } else if (u && u.id === 'u5') {
         notifs = [
-          { txt: 'Laure D. vous a envoy&#233; un message sur la proc&#233;dure d\'&#233;quivalence de dipl&#244;me', time: 'Il y a 2 heures', lien: 'messagerie' },
-          { txt: 'Votre profil a &#233;t&#233; vu 4 fois cette semaine par des infirmi&#232;res Pairantes', time: 'Il y a 1 jour', lien: 'dash' },
-          { txt: 'Bon plan communaut&#233; : formation AFGSU2 gratuite &#224; Paris 13e', time: 'Il y a 2 jours', lien: 'communaute' }
+          { txt: 'Sophie G. vous a envoy&#233; un message sur les certifications IATF et les outils PLM', time: 'Il y a 2 heures', lien: 'messagerie' },
+          { txt: 'Votre profil a &#233;t&#233; vu 6 fois cette semaine par des Pairant(e)s ing&#233;nieurs', time: 'Il y a 1 jour', lien: 'dash' },
+          { txt: 'Bon plan communaut&#233; : session de formation CATIA V5 disponible &#224; l\'ENSAM', time: 'Il y a 2 jours', lien: 'communaute' }
         ];
       } else if (u && u.type === 'association') {
         notifs = [
