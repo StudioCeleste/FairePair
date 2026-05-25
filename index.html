@@ -3580,18 +3580,22 @@
       document.getElementById('nav-links').innerHTML = pages.map(function (p) {
         return '<button class="nb' + (cur === p[0] ? ' on' : '') + '" onclick="go(\'' + p[0] + '\')">' + '' + p[1] + '</button>';
       }).join('');
+      var langSwitch = '<select title="Changer de langue" onchange="toast(\'La traduction de la maquette n\\\'est pas encore disponible.\', \'info\'); this.value=\'fr\'" style="background:transparent;border:1px solid var(--bd);border-radius:4px;color:var(--tx);font-size:12px;padding:3px 6px;cursor:pointer;outline:none">' +
+        '<option value="fr">FR</option><option value="en">EN</option><option value="ar">AR</option></select>';
       if (u) {
         var nm = u.type === 'association' ? u.nom_asso : u.prenom + ' ' + u.nom;
         var ini = u.type === 'association' ? 'AS' : ((u.prenom || '')[0] + (u.nom || '')[0]).toUpperCase();
-        var hasMsg = (u.id === 'u5');
+        var hasMsg = (u.id === 'u5' || u.id === 'u3');
         document.getElementById('nav-r').innerHTML =
-          '<span style="font-size:13px;font-weight:500">' + nm + '</span>' +
+          langSwitch +
+          '<span style="font-size:13px;font-weight:500;margin-left:5px">' + nm + '</span>' +
           '<div class="notif-btn" onclick="toggleNotif()" title="Notifications">' + (hasMsg ? '<div class="notif-dot"></div>' : '') + '&#128276;</div>' +
           '<div class="av-btn" onclick="openDrop()" title="Mon compte">' + ini + '</div>' +
           '<button id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu"><span></span><span></span><span></span></button>';
       } else {
         document.getElementById('nav-r').innerHTML =
-          '<button class="bo bsm" onclick="go(\'entree-paire\')">Je suis Pair&#233;</button>' +
+          langSwitch +
+          '<button class="bo bsm" style="margin-left:5px" onclick="go(\'entree-paire\')">Je suis Pair&#233;</button>' +
           '<button class="bo bsm" onclick="openModal(\'login\')">Connexion</button>' +
           '<button class="bp bsm" onclick="openModal(\'register\')">S\'inscrire</button>' +
           '<button id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu"><span></span><span></span><span></span></button>';
@@ -4465,6 +4469,19 @@
         '<div class="card"><div class="dstt">Mon profil</div>' +
         '<div class="arow"><div class="avs"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#DFF3EC"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="14" fill="#0A5E47" font-weight="600">' + (u.prenom[0]+u.nom[0]) + '</text></svg></div><div style="flex:1"><div class="anm">' + u.prenom + ' ' + u.nom + '</div><div class="asb">' + u.metier + ' &middot; ' + u.entreprise + '</div></div></div></div>' +
         '<div class="card"><div class="dstt">Prochain entretien</div>' + nextHtml + '</div>' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:13px">' +
+        '<div class="card"><div class="dstt">Mes messages</div>' +
+        (aps.length > 0 ? '<div class="arow" style="cursor:pointer" onclick="go(\'messagerie\')">' +
+          '<div class="conv-av"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#FDF2DC"/><ellipse cx="18" cy="14" rx="7" ry="7.5" fill="#E8993A" opacity="0.6"/><ellipse cx="18" cy="30" rx="13" ry="10" fill="#E8993A" opacity="0.35"/></svg></div>' +
+          '<div style="flex:1"><div class="anm">Karim Al-Rashid</div><div class="asb">Cliquez pour voir la conversation</div></div>' +
+          '<div class="notif-dot" style="position:static;width:8px;height:8px;margin-top:4px"></div></div>' : '<div class="empty"><div class="emico">&#128172;</div>Aucun message encore.</div>') +
+        '</div>' +
+        '<div class="card"><div class="dstt">Ressources utiles</div>' +
+        '<div style="display:flex;flex-direction:column;gap:7px">' +
+        '<a href="#" onclick="go(\'communaute\');return false;" style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx);padding:8px;border-radius:var(--r);background:var(--bg);text-decoration:none">&#128161; Forum des Pairants</a>' +
+        '<a href="#" style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx);padding:8px;border-radius:var(--r);background:var(--bg);text-decoration:none">&#128196; Guide de l\'entretien technique</a>' +
+        '</div></div>' +
         '</div>' +
         '</div>' + certCards + '</div>';
     }
