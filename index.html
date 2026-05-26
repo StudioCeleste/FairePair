@@ -290,6 +290,12 @@
       min-width: 0
     }
 
+    .nav-r select,
+    .nav-r button {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
     .av-btn {
       width: 32px;
       height: 32px;
@@ -3581,24 +3587,23 @@
       document.getElementById('nav-links').innerHTML = pages.map(function (p) {
         return '<button class="nb' + (cur === p[0] ? ' on' : '') + '" onclick="go(\'' + p[0] + '\')">' + '' + p[1] + '</button>';
       }).join('');
-      var langSwitch = '<select title="Changer de langue" onchange="toast(\'Traduction compl&#232;te en cours. Participez &#224; la traduction collaborative !\', \'info\'); this.value=\'fr\'" style="background:transparent;border:1px solid var(--bd);border-radius:4px;color:var(--tx);font-size:12px;padding:3px 6px;cursor:pointer;outline:none">' +
-        '<option value="fr">FR</option><option value="en">EN</option><option value="ar">AR</option></select>';
+      var langSwitch = '<button class="nb" title="Changer de langue" onclick="toast(\'Traduction compl&#232;te en cours. Participez &#224; la traduction collaborative !\', \'info\')" style="display:flex;align-items:center;gap:5px;font-size:13px;padding:6px 10px;margin-right:4px">&#127760; FR</button>';
       if (u) {
         var nm = u.type === 'association' ? u.nom_asso : u.prenom + ' ' + u.nom;
         var ini = u.type === 'association' ? 'AS' : ((u.prenom || '')[0] + (u.nom || '')[0]).toUpperCase();
         var hasMsg = (u.id === 'u5' || u.id === 'u3');
         document.getElementById('nav-r').innerHTML =
           langSwitch +
-          '<span style="font-size:13px;font-weight:500;margin-left:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px" title="' + nm + '">' + nm + '</span>' +
+          '<span style="font-size:13px;font-weight:500;margin-left:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px" title="' + nm + '">' + nm + '</span>' +
           '<div class="notif-btn" onclick="toggleNotif()" title="Notifications">' + (hasMsg ? '<div class="notif-dot"></div>' : '') + '&#128276;</div>' +
           '<div class="av-btn" onclick="openDrop()" title="Mon compte">' + ini + '</div>' +
           '<button id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu"><span></span><span></span><span></span></button>';
       } else {
         document.getElementById('nav-r').innerHTML =
           langSwitch +
-          '<button class="bo bsm" style="white-space:nowrap" onclick="go(\'entree-paire\')">Je suis Pair&#233;</button>' +
-          '<button class="bo bsm" style="white-space:nowrap" onclick="openModal(\'login\')">Connexion</button>' +
-          '<button class="bp bsm" style="white-space:nowrap" onclick="openModal(\'register\')">S\'inscrire</button>' +
+          '<button class="bo bsm" onclick="go(\'entree-paire\')">Je suis Pair&#233;</button>' +
+          '<button class="bo bsm" onclick="openModal(\'login\')">Connexion</button>' +
+          '<button class="bp bsm" onclick="openModal(\'register\')">S\'inscrire</button>' +
           '<button id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu"><span></span><span></span><span></span></button>';
       }
       // Menu mobile
