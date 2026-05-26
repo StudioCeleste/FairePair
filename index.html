@@ -3398,6 +3398,7 @@
     // ═══════════════════════════════════
     // On efface la BDD locale au rechargement de la page pour pouvoir refaire l'appairage depuis le début.
     Store.del('fp6');
+    Store.del('fp6_u');
 
     // ═══════════════════════════════════
     // BASE DE DONNÉES — multi-métiers
@@ -3576,7 +3577,7 @@
       // Visiteur : seul l'accueil est visible dans la nav
       var pages = u
         ? [['home', 'Accueil'], ['hub', 'Hub de Pairs'], ['communaute', '&#201;changes'], ['candidatures', 'Candidatures'], ['dash', 'Mon espace']]
-        : [['home', 'Accueil']];
+        : [];
       document.getElementById('nav-links').innerHTML = pages.map(function (p) {
         return '<button class="nb' + (cur === p[0] ? ' on' : '') + '" onclick="go(\'' + p[0] + '\')">' + '' + p[1] + '</button>';
       }).join('');
@@ -3595,9 +3596,9 @@
       } else {
         document.getElementById('nav-r').innerHTML =
           langSwitch +
-          '<button class="bo bsm" style="margin-left:5px" onclick="go(\'entree-paire\')">Je suis Pair&#233;</button>' +
-          '<button class="bo bsm" onclick="openModal(\'login\')">Connexion</button>' +
-          '<button class="bp bsm" onclick="openModal(\'register\')">S\'inscrire</button>' +
+          '<button class="bo bsm" style="white-space:nowrap" onclick="go(\'entree-paire\')">Je suis Pair&#233;</button>' +
+          '<button class="bo bsm" style="white-space:nowrap" onclick="openModal(\'login\')">Connexion</button>' +
+          '<button class="bp bsm" style="white-space:nowrap" onclick="openModal(\'register\')">S\'inscrire</button>' +
           '<button id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu"><span></span><span></span><span></span></button>';
       }
       // Menu mobile
