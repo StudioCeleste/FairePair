@@ -4222,7 +4222,7 @@
         // Un Pairé ne peut pas appairage un autre Pairé
         ctaHtml = '';
       } else {
-        ctaHtml = '<div class="pcta" id="app-cta"><div class="ctxt"><h4>Appairez-vous avec ce profil</h4><p>Les identit&#233;s seront r&#233;v&#233;l&#233;es une fois les deux parties d\'accord.</p></div><button class="bwh" onclick="showReqApp(\'' + p.id + '\')">Demander l\'appairage &#8594;</button></div>';
+        ctaHtml = '<div class="pcta"><div class="ctxt"><h4>Appairez-vous avec ce profil</h4><p>Les identit&#233;s seront r&#233;v&#233;l&#233;es une fois les deux parties d\'accord.</p></div><button class="bwh" onclick="reqApp(\'' + p.id + '\')">Demander l\'appairage &#8594;</button></div>';
       }
 
       document.getElementById('s-profile').innerHTML =
@@ -4242,19 +4242,9 @@
         ctaHtml + '</div>';
     }
 
-    function showReqApp(ppId) {
-      var p = DB.get().profils.find(function(x) { return x.id === ppId; });
-      var preRempli = "Bonjour, j'ai vu votre profil de " + (p ? p.metier : 'pair\u00e9') + " et je serais ravi(e) de pouvoir \u00e9changer avec vous pour vous accompagner. Acceptez-vous cette mise en relation ?";
-      var html = '<div style="margin-top:12px;background:var(--bg);border-radius:var(--r);padding:14px;border:1px solid rgba(10,94,71,.2)"><p style="font-size:13px;margin-bottom:8px;font-weight:500;color:var(--tx)">Message d\'introduction :</p><textarea id="req-msg" style="width:100%;min-height:70px;font-size:13px;padding:8px;border:1px solid rgba(0,0,0,.1);border-radius:4px;margin-bottom:10px;font-family:inherit;line-height:1.4">' + preRempli + '</textarea><button class="bp bfull" onclick="reqApp(\'' + ppId + '\')">Valider et envoyer la demande &#8594;</button></div>';
-      var ctaEl = document.getElementById('app-cta');
-      if (ctaEl) ctaEl.innerHTML = html;
-    }
-
     function reqApp(ppId) {
       var u = Auth.me(); if (!u) { openModal('login'); return; }
       var db = DB.get();
-      var msgEl = document.getElementById('req-msg');
-      var txt = msgEl ? msgEl.value : 'Bonjour !';
       var ap = {
         id: 'ap_' + Date.now(), pt_id: u.id, pp_id: ppId, status: 'en_cours', date_d: Date.now(),
         date_e: new Date().getFullYear() + '-05-28',
@@ -4262,11 +4252,6 @@
       };
       for (var i = 0; i < db.profils.length; i++) { if (db.profils[i].id === ppId) { db.profils[i].status = 'appaire'; break; } }
       db.appairages.push(ap);
-      db.conversations = db.conversations || [];
-      db.conversations.push({
-        id: 'cv_' + Date.now(), participants: [u.id, ppId],
-        msgs: [{ from: u.id, txt: txt, ts: Date.now() }]
-      });
       DB.save(db);
       toast('Demande envoy&#233;e ! Vous serez notifi&#233; d&#232;s acceptation.', 'ok');
       go('dash');
@@ -4339,8 +4324,8 @@
           '<div class="prw"><span style="color:var(--mu)">Progression</span><span id="g-cnt" style="font-weight:500;color:var(--tl)">' + done + ' / ' + tot + '</span></div>' +
           '<div class="pbar"><div class="pfill" id="g-fill" style="width:' + Math.round(done / tot * 100) + '%"></div></div>' +
           '<div class="lrdy" id="g-rdy" style="' + (done === tot ? 'display:flex' : 'display:none') + '">' +
-          '<span style="font-size:18px">&#9672;</span><div><div style="font-size:12px;font-weight:500;color:#1E6B1E">Label <span class="fp-brand">Faire<i>pair</i></span> &#8212; Pr&#234;t</div><div style="font-size:11px;color:#1E6B1E">Tous les crit&#232;res valid&#233;s</div></div></div>' +
-          '<button class="bp bfull" style="margin-top:10px;font-size:13px" onclick="deliverLabel(\'' + apId + '\',\'' + (pp ? pp.id : '') + '\')">Valider &amp; d&#233;livrer le Label &#8594;</button>' +
+          '<span style="font-size:18px">&#9672;</span><div><div style="font-size:12px;font-weight:500;color:#1E6B1E">Entretien valid&#233;</div><div style="font-size:11px;color:#1E6B1E">Pr&#234;t pour l\'immersion (PMSMP)</div></div></div>' +
+          '<button class="bp bfull" style="margin-top:10px;font-size:13px" onclick="validEntretien(\'' + apId + '\',\'' + (pp ? pp.id : '') + '\')">Valider &amp; proposer l\'immersion &#8594;</button>' +
           '</div></div>';
       }
 
@@ -4390,12 +4375,12 @@
       var fill = document.getElementById('g-fill'); if (fill) fill.style.width = Math.round(done / tot * 100) + '%';
       var rdy = document.getElementById('g-rdy'); if (rdy) rdy.style.display = done === tot ? 'flex' : 'none';
     }
-    function deliverLabel(apId, ppId) {
+    function validEntretien(apId, ppId) {
       var db = DB.get(), u = Auth.me();
-      for (var i = 0; i < db.appairages.length; i++) { if (db.appairages[i].id === apId) { db.appairages[i].status = 'certifie'; db.appairages[i].done = true; break; } }
-      for (var j = 0; j < db.profils.length; j++) { if (db.profils[j].id === ppId) { db.profils[j].status = 'certifie'; db.profils[j].label_by = 'Fairepair \u2014 R\u00e9seau de professionnels b\u00e9n\u00e9voles'; db.profils[j].label_date = new Date().toISOString().split('T')[0]; break; } }
+      for (var i = 0; i < db.appairages.length; i++) { if (db.appairages[i].id === apId) { db.appairages[i].status = 'en_stage'; break; } }
+      for (var j = 0; j < db.profils.length; j++) { if (db.profils[j].id === ppId) { db.profils[j].status = 'en_stage'; break; } }
       DB.save(db);
-      toast('Label <span class="fp-brand">Faire<i>pair</i></span> d&#233;livr&#233; ! &#127881;', 'ok');
+      toast('Entretien valid&#233; ! Pr&#233;paration de l\'immersion...', 'ok');
       if (timerInt) { clearInterval(timerInt); timerInt = null; }
       var db2 = DB.get();
       var pp2 = null; for (var k = 0; k < db2.profils.length; k++) { if (db2.profils[k].id === ppId) { pp2 = db2.profils[k]; break; } }
@@ -4406,6 +4391,15 @@
         duree: '2', date_deb: '', obj: pp2 ? pp2.comp.slice(0, 3).map(function (c) { return c.n; }).join('\n') : '', status: 'draft'
       });
       setTimeout(function () { go('stage'); }, 1600);
+    }
+
+    function deliverLabel(apId, ppId) {
+      var db = DB.get();
+      for (var i = 0; i < db.appairages.length; i++) { if (db.appairages[i].id === apId) { db.appairages[i].status = 'certifie'; db.appairages[i].done = true; break; } }
+      for (var j = 0; j < db.profils.length; j++) { if (db.profils[j].id === ppId) { db.profils[j].status = 'certifie'; db.profils[j].label_by = 'Fairepair \u2014 R\u00e9seau de professionnels b\u00e9n\u00e9voles'; db.profils[j].label_date = new Date().toISOString().split('T')[0]; break; } }
+      DB.save(db);
+      toast('Label <span class="fp-brand">Faire<i>pair</i></span> d&#233;livr&#233; ! &#127881;', 'ok');
+      go('dash');
     }
 
 
@@ -4527,8 +4521,10 @@
           '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Ivanova" value="' + (cDat.nom || '') + '"></div>' +
           '<div class="fg"><label>Langues parl&#233;es</label><input id="cp-lg" placeholder="Arabe, Anglais, Fran&#231;ais B1" value="' + (cDat.langues || '') + '"></div>';
       } else if (cStep === 2) {
+        var defBio = "Dipl\u00f4m\u00e9(e) dans mon domaine, j'ai travaill\u00e9 plusieurs ann\u00e9es dans mon pays d'origine o\u00f9 j'ai acquis une solide exp\u00e9rience sur le terrain. J'ai eu l'opportunit\u00e9 de piloter divers projets et de collaborer avec des \u00e9quipes techniques.\n\nActuellement en France, je souhaite m'int\u00e9grer rapidement et mettre \u00e0 profit mes comp\u00e9tences. Je suis tr\u00e8s motiv\u00e9(e) pour rejoindre une \u00e9quipe dynamique.";
+        var bioVal = cDat.bio !== undefined ? cDat.bio : defBio;
         fc = '<p style="font-size:13px;margin-bottom:13px;color:var(--mu)">D\u00e9crivez le parcours de mani\u00e8re simple &mdash; comme si vous le racontiez \u00e0 quelqu\'un.</p>' +
-          '<div class="fg"><label>Biographie narrative (3-4 paragraphes)</label><textarea id="cp-bio" style="min-height:210px;font-size:13px;line-height:1.75" placeholder="D&#233;crivez le parcours, les r&#233;alisations, les responsabilit&#233;s&#8230;">' + (cDat.bio || '') + '</textarea></div>';
+          '<div class="fg"><label>Biographie narrative (3-4 paragraphes)</label><textarea id="cp-bio" style="min-height:210px;font-size:13px;line-height:1.75" placeholder="D&#233;crivez le parcours, les r&#233;alisations, les responsabilit&#233;s&#8230;">' + bioVal + '</textarea></div>';
       } else {
         var existComp = cDat.comp && cDat.comp.length > 0 ? cDat.comp : [{ n: '', lv: 'Confirm&#233;', a: '' }];
         var compRows = existComp.map(function (c) {
@@ -4793,10 +4789,11 @@
       // Statut global
       var statut = pp ? pp.status : 'en_attente';
       var steps = [
-        { done: true, active: false, ic: '&#10003;', title: 'Profil créé', sub: 'Votre fiche est visible dans le R\u00e9seau de Pairs de manière anonymisée.' },
-        { done: statut !== 'en_attente', active: statut === 'en_attente', ic: statut !== 'en_attente' ? '&#10003;' : '&#8942;', title: 'En attente d\'appairage', sub: statut === 'en_attente' ? 'Un Pairant de votre métier va choisir votre profil dans le R\u00e9seau.' : 'Un Pairant a choisi votre profil. Entretien en cours.' },
-        { done: statut === 'certifie', active: statut === 'appaire', ic: statut === 'certifie' ? '&#10003;' : '3', title: 'Entretien de validation', sub: statut === 'appaire' ? 'Entretien planifié avec votre Pairant. La traduction en direct sera disponible.' : (statut === 'certifie' ? 'Entretien réalisé avec succès.' : 'En attente de l\'appairage.') },
-        { done: statut === 'certifie', active: false, ic: '&#9672;', title: 'Label <span class="fp-brand">Faire<i>pair</i></span>', sub: statut === 'certifie' ? ('Obtenu le ' + pp.label_date + ' — certifié par ' + pp.label_by) : 'Vous recevez le label après validation de vos compétences par votre pair.' }
+        { done: true, active: false, ic: '&#10003;', title: 'Profil cr&#233;&#233;', sub: 'Votre fiche est visible dans le R\u00e9seau de Pairs de mani\u00e8re anonymis\u00e9e.' },
+        { done: statut !== 'en_attente', active: statut === 'en_attente', ic: statut !== 'en_attente' ? '&#10003;' : '&#8942;', title: 'En attente d\'appairage', sub: statut === 'en_attente' ? 'Un Pairant de votre m\u00e9tier va choisir votre profil dans le R\u00e9seau.' : 'Un Pairant a choisi votre profil. Entretien en cours.' },
+        { done: statut === 'en_stage' || statut === 'certifie', active: statut === 'appaire', ic: (statut === 'en_stage' || statut === 'certifie') ? '&#10003;' : '3', title: 'Entretien de validation', sub: statut === 'appaire' ? 'Entretien planifi\u00e9 avec votre Pairant. La traduction en direct sera disponible.' : ((statut === 'en_stage' || statut === 'certifie') ? 'Entretien r\u00e9alis\u00e9 avec succ\u00e8s.' : 'En attente de l\'appairage.') },
+        { done: statut === 'certifie', active: statut === 'en_stage', ic: statut === 'certifie' ? '&#10003;' : '4', title: 'Immersion (PMSMP)', sub: statut === 'en_stage' ? 'Immersion en entreprise en cours de r\u00e9alisation.' : (statut === 'certifie' ? 'Immersion compl\u00e9t\u00e9e avec succ\u00e8s.' : 'Une immersion sera propos\u00e9e apr\u00e8s l\'entretien.') },
+        { done: statut === 'certifie', active: false, ic: '&#9672;', title: 'Label <span class="fp-brand">Faire<i>pair</i></span>', sub: statut === 'certifie' ? ('Obtenu le ' + pp.label_date + ' \u2014 certifi\u00e9 par ' + pp.label_by) : 'Vous recevrez le label apr\u00e8s l\'immersion avec votre pair.' }
       ];
       var stepsHtml = steps.map(function (s) {
         var cls = s.done ? 'done' : (s.active ? 'active' : 'todo');
@@ -4807,7 +4804,7 @@
         '<div class="avs">' + avSvg(pp, 36) + '</div>' +
         '<div style="flex:1"><div style="font-size:13px;font-weight:500">' + pp.metier + ' &middot; ' + pp.exp + ' ans d\'expérience</div>' +
         '<div style="font-size:12px;color:var(--mu)">' + pp.secteur + ' &middot; ' + pp.pays + '</div></div>' +
-        '<span class="badge ' + ({ en_attente: 'bgr', appaire: 'ba', certifie: 'bg' }[pp.status] || 'bgr') + '">' + ({ en_attente: 'En attente', appaire: 'Appair&#233;', certifie: 'Labellised' }[pp.status] || '') + '</span>' +
+        '<span class="badge ' + ({ en_attente: 'bgr', appaire: 'ba', en_stage: 'bt', certifie: 'bg' }[pp.status] || 'bgr') + '">' + ({ en_attente: 'En attente', appaire: 'Appair&#233;', en_stage: 'En Immersion', certifie: 'Labellis&#233;' }[pp.status] || '') + '</span>' +
         '</div>' +
         '<button class="bo bfull" style="font-size:13px" onclick="go(\'profile\',\'' + pp.id + '\')">Voir mon profil anonymis&#233; &#8594;</button>') : '<p style="font-size:13px">Profil non encore cr&#233;&#233;. Contactez votre association.</p>';
       var entHtml = myAp && !myAp.done ?
@@ -5199,7 +5196,8 @@
           '</div>';
       } else {
         // Afficher la convention générée
-        document.getElementById('s-stage').innerHTML = rConvention(draft);
+        document.getElementById('s-stage').innerHTML = rConvention(draft) + 
+          '<div style="max-width:800px;margin:30px auto;text-align:center"><button class="bp" style="padding:14px 28px;font-size:15px" onclick="deliverLabel(\'' + draft.ap_id + '\',\'' + draft.pp_id + '\')">Immersion termin&#233;e : D&#233;livrer le Label &#8594;</button></div>';
         // Auto-scroll to doc
         setTimeout(function () { var d = document.getElementById('conv-doc'); if (d) d.scrollIntoView({ behavior: 'smooth' }); }, 80);
       }
