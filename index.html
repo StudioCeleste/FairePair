@@ -4257,7 +4257,7 @@
       var txt = msgEl ? msgEl.value : 'Bonjour !';
       var ap = {
         id: 'ap_' + Date.now(), pt_id: u.id, pp_id: ppId, status: 'en_cours', date_d: Date.now(),
-        date_e: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
+        date_e: new Date().getFullYear() + '-05-28',
         grille: { lex: false, vocab: false, star1: false, star2: false, ec1: false, ec2: false }, done: false
       };
       for (var i = 0; i < db.profils.length; i++) { if (db.profils[i].id === ppId) { db.profils[i].status = 'appaire'; break; } }
@@ -4326,21 +4326,10 @@
           '<div><div class="gtxt">' + it.lbl + '</div><div class="gsub">' + it.sub + '</div></div></div>';
       }).join('');
 
-      // Panneau droit : différent selon rôle
       var rightPanel = '';
       if (isPaire) {
-        // Pairé : grille lecture seule + explication
-        rightPanel =
-          '<div class="gcard"><div class="ghd"><h4>Grille d\'entretien</h4><p>' + ppMet + '</p></div>' +
-          '<div style="background:var(--tll);border:1px solid rgba(10,94,71,.15);border-radius:var(--r);padding:9px 12px;margin-bottom:12px;font-size:12px;color:var(--tl)">' +
-          '&#9432; Le Pairant coche les crit&#232;res au fil de l\'entretien. Vous pouvez suivre la progression en temps r&#233;el.</div>' +
-          '<div id="g-items">' + gitems + '</div>' +
-          '<div class="gft">' +
-          '<div class="prw"><span style="color:var(--mu)">Progression</span><span id="g-cnt" style="font-weight:500;color:var(--tl)">' + done + ' / ' + tot + '</span></div>' +
-          '<div class="pbar"><div class="pfill" id="g-fill" style="width:' + Math.round(done / tot * 100) + '%"></div></div>' +
-          '<div class="lrdy" id="g-rdy" style="' + (done === tot ? 'display:flex' : 'display:none') + '">' +
-          '<span style="font-size:18px">&#9672;</span><div><div style="font-size:12px;font-weight:500;color:#1E6B1E">Label <span class="fp-brand">Faire<i>pair</i></span> &#8212; Pr&#234;t</div><div style="font-size:11px;color:#1E6B1E">Tous les crit&#232;res valid&#233;s !</div></div></div>' +
-          '</div></div>';
+        // Pairé : grille lecture seule + explication retirée
+        rightPanel = '';
       } else {
         // Pairant : grille interactive avec bouton de validation
         rightPanel =
