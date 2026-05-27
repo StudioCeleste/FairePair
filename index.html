@@ -4242,18 +4242,34 @@
         ctaHtml + '</div>';
     }
 
+    function showReqApp(ppId) {
+      var p = DB.get().profils.find(function(x) { return x.id === ppId; });
+      var preRempli = "Bonjour, j'ai vu votre profil de " + (p ? p.metier : 'pair\u00e9') + " et je serais ravi(e) de pouvoir \u00e9changer avec vous pour vous accompagner. Acceptez-vous cette mise en relation ?";
+      var html = '<div style="margin-top:12px;background:var(--bg);border-radius:var(--r);padding:14px;border:1px solid rgba(10,94,71,.2)"><p style="font-size:13px;margin-bottom:8px;font-weight:500;color:var(--tx)">Message d\'introduction :</p><textarea id="req-msg" style="width:100%;min-height:70px;font-size:13px;padding:8px;border:1px solid rgba(0,0,0,.1);border-radius:4px;margin-bottom:10px;font-family:inherit;line-height:1.4">' + preRempli + '</textarea><button class="bp bfull" onclick="reqApp(\'' + ppId + '\')">Valider et envoyer la demande &#8594;</button></div>';
+      var ctaEl = document.getElementById('app-cta');
+      if (ctaEl) ctaEl.innerHTML = html;
+    }
+
     function reqApp(ppId) {
       var u = Auth.me(); if (!u) { openModal('login'); return; }
       var db = DB.get();
+      var msgEl = document.getElementById('req-msg');
+      var txt = msgEl ? msgEl.value : 'Bonjour !';
       var ap = {
         id: 'ap_' + Date.now(), pt_id: u.id, pp_id: ppId, status: 'en_cours', date_d: Date.now(),
         date_e: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
         grille: { lex: false, vocab: false, star1: false, star2: false, ec1: false, ec2: false }, done: false
       };
       for (var i = 0; i < db.profils.length; i++) { if (db.profils[i].id === ppId) { db.profils[i].status = 'appaire'; break; } }
-      db.appairages.push(ap); DB.save(db);
+      db.appairages.push(ap);
+      db.conversations = db.conversations || [];
+      db.conversations.push({
+        id: 'cv_' + Date.now(), participants: [u.id, ppId],
+        msgs: [{ from: u.id, txt: txt, ts: Date.now() }]
+      });
+      DB.save(db);
       toast('Demande envoy&#233;e ! Vous serez notifi&#233; d&#232;s acceptation.', 'ok');
-      rProfile();
+      go('dash');
     }
 
     // ═══════════════════════════════════
@@ -4517,7 +4533,7 @@
       var fc = '';
       if (cStep === 1) {
         fc = '<div class="fr"><div class="fg"><label>M&#233;tier (exact)</label><input id="cp-mt" placeholder="ex : Ing&#233;nieur" value="' + (cDat.metier || '') + '"></div><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="cp-ex" placeholder="8" value="' + (cDat.exp || '') + '" min="1" max="50"></div></div>' +
-          '<div class="fg"><label>Secteur d\'activit&#233;</label><input id="cp-sc" placeholder="ex : Soins intensifs" value="' + (cDat.secteur || '') + '"></div>' +
+          '<div class="fg"><label>Secteur d\'activit&#233;</label><input id="cp-sc" placeholder="ex : Automobile" value="' + (cDat.secteur || '') + '"></div>' +
           '<div class="fr"><div class="fg"><label>Pays d\'origine</label><input id="cp-py" placeholder="ex : Ukraine" value="' + (cDat.pays || '') + '"></div><div class="fg"><label>Pr&#233;nom (confidentiel)</label><input id="cp-pr" placeholder="Elena" value="' + (cDat.prenom || '') + '"></div></div>' +
           '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Ivanova" value="' + (cDat.nom || '') + '"></div>' +
           '<div class="fg"><label>Langues parl&#233;es</label><input id="cp-lg" placeholder="Arabe, Anglais, Fran&#231;ais B1" value="' + (cDat.langues || '') + '"></div>';
