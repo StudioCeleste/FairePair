@@ -3432,7 +3432,7 @@
               bio: 'Dipl\u00f4m\u00e9 ing\u00e9nieur m\u00e9canique de l\'Universit\u00e9 de Damas en 2012, j\'ai travaill\u00e9 11 ans dans le secteur automobile syrien et r\u00e9gional. J\'ai \u00e9t\u00e9 responsable de la conception de pi\u00e8ces d\'embrayage et de transmission pour des v\u00e9hicules l\u00e9gers, en utilisant SolidWorks et CATIA V5.\n\nJ\'ai dirig\u00e9 une \u00e9quipe de 6 techniciens et pilot\u00e9 plusieurs projets de mise en s\u00e9rie. J\'ai \u00e9galement g\u00e9r\u00e9 la relation avec des fournisseurs de composants m\u00e9caniques en Turquie et en Allemagne, en r\u00e9digeant des cahiers des charges techniques en anglais.\n\nArrive en France en 2023, je cherche un poste d\'ing\u00e9nieur conception ou m\u00e9thodes dans l\'industrie automobile.',
               comp: [{ n: 'Conception m\u00e9canique (CATIA V5 / SolidWorks)', lv: 'Expert', a: 11, p: 94 }, { n: 'Calcul de r\u00e9sistance des mat\u00e9riaux', lv: 'Expert', a: 9, p: 90 }, { n: 'Mise en s\u00e9rie / industrialisation', lv: 'Confirm\u00e9', a: 7, p: 80 }, { n: 'Gestion de projet technique', lv: 'Confirm\u00e9', a: 6, p: 76 }, { n: 'Cahiers des charges & normes ISO', lv: 'Confirm\u00e9', a: 8, p: 78 }],
               ecarts: [{ t: 'warn', ti: 'Normes automobiles IATF 16949 & AMDEC', d: 'Standards qualit\u00e9 automobile applicables en France. Formation courte recommand\u00e9e \u2014 sa base solide acc\u00e9l\u00e8re l\'acquisition.' }, { t: 'warn', ti: 'Logiciel PLM (Teamcenter / Enovia)', d: 'Les PLM utilis\u00e9s dans les groupes fran\u00e7ais diff\u00e8rent. Prise en main estim\u00e9e : 2-3 semaines.' }, { t: 'info', ti: 'Fran\u00e7ais technique industriel', d: 'Niveau B2 \u00e0 l\'oral. Vocabulaire m\u00e9canique ma\u00eetris\u00e9. Expression \u00e9crite en progr\u00e8s.' }],
-              status: 'appaire', label_by: null, label_date: null, col: 'teal'
+              status: 'en_attente', label_by: null, label_date: null, col: 'teal'
             },
             {
               id: 'pp4', by: 'u2', prenom_c: 'Ahmad', nom_c: 'S.', metier: 'Ing\u00e9nieur civil', exp: 8, secteur: 'BTP & Construction', pays: 'Syrie',
@@ -3451,14 +3451,7 @@
               status: 'en_attente', label_by: null, label_date: null, col: 'purple'
             }
           ],
-          appairages: [
-            {
-              id: 'ap1', pt_id: 'u3', pp_id: 'pp3', status: 'en_cours',
-              date_d: Date.now() - 86400000 * 2,
-              date_e: new Date(Date.now() + 86400000 * 4).toISOString().split('T')[0],
-              grille: { lex: true, vocab: true, star1: false, star2: false, ec1: true, ec2: false }, done: false
-            }
-          ],
+          appairages: [],
           posts: [
             { id: 'po1', auteur: 'Sophie G.', role: 'Pairante', metier: 'Ing\u00e9nieure m\u00e9canique', type: 'bon', titre: 'Formation CATIA V5 gratuite \u00e0 l\'ENSAM Paris', corps: 'L\'\u00e9cole propose des sessions gratuites pour les ing\u00e9nieurs \u00e9trangers avec un bon niveau. Excellent formateur, contenu adapt\u00e9 au contexte industriel fran\u00e7ais. Inscription sur le site de l\'\u00e9cole.', date: 'il y a 2 jours', likes: 11 },
             { id: 'po2', auteur: 'Karim A.', role: 'Pair\u00e9', metier: 'Ing\u00e9nieur m\u00e9canique', type: 'don', titre: 'Donne : livre M\u00e9canique des solides Dunod (2020)', corps: 'Je n\'en ai plus besoin depuis mon embauche chez Faurecia. Livre en tr\u00e8s bon \u00e9tat. \u00c0 r\u00e9cup\u00e9rer sur Paris ou envoi postal partag\u00e9.', date: 'il y a 3 jours', likes: 4 },
@@ -3467,18 +3460,7 @@
             { id: 'po5', auteur: 'Karim A.', role: 'Pair\u00e9', metier: 'Ing\u00e9nieur m\u00e9canique', type: 'don', titre: 'Donne : livre Thermodynamique appliqu\u00e9e (2018)', corps: 'Je donne ce livre de thermo appliqu\u00e9e, parfait pour les ing\u00e9nieurs qui pr\u00e9parent un entretien dans le secteur \u00e9nerg\u00e9tique. Paris 11e.', date: 'il y a 1 semaine', likes: 6 },
             { id: 'po6', auteur: 'Sophie G.', role: 'Pairante', metier: 'Ing\u00e9nieure m\u00e9canique', type: 'bon', titre: 'Recrutement : Renault cherche des ing\u00e9nieurs conception', corps: 'Mon \u00e9quipe cherche 2 profils urgents, CATIA V5 requis. Si un pair\u00e9 labellis\u00e9 est int\u00e9ress\u00e9, contactez-moi. Je peux faire le lien directement.', date: 'il y a 2 semaines', likes: 27 }
           ],
-          conversations: [
-            {
-              id: 'cv1', participants: ['u3', 'u5'],
-              msgs: [
-                { from: 'u3', txt: 'Bonjour Karim, j\'ai bien reçu votre profil via France Terre d\'Asile. Je suis ingénieure mécanique chez Renault. Votre parcours en conception est remarquable — CATIA V5 et la mise en série, c\'est exactement ce que l\'on fait ici. Seriez-vous disponible pour un entretien visio cette semaine ?', ts: Date.now() - 86400000 * 2 - 3600000 * 5 },
-                { from: 'u5', txt: 'Bonjour Sophie, merci beaucoup pour votre message. Je suis très motivé. Je suis disponible jeudi ou vendredi après-midi. Quelle heure vous conviendrait ?', ts: Date.now() - 86400000 * 2 - 3600000 * 2 },
-                { from: 'u3', txt: 'Parfait, disons jeudi 15h ? Je vous envoie le lien. N\'hésitez pas à préparer 2-3 exemples concrets de projets, on utilisera la méthode STAR pour structurer l\'échange.', ts: Date.now() - 86400000 * 2 - 3600000 * 1 },
-                { from: 'u5', txt: 'Jeudi 15h c\'est parfait. J\'ai déjà noté mes exemples : le projet d\'embrayage, la non-conformité résolue en 2019, et le démarrage de série en 2021. À jeudi !', ts: Date.now() - 86400000 * 1 },
-                { from: 'u3', txt: 'Super préparation ! Voici le lien : meet.google.com/fairepair-247. L\'entretien durera environ 45 min. À jeudi !', ts: Date.now() - 3600000 * 3 }
-              ]
-            }
-          ]
+          conversations: []
         };
         this.save(d); return d;
       }
@@ -3582,7 +3564,7 @@
       var u = Auth.me();
       // Visiteur : seul l'accueil est visible dans la nav
       var pages = u
-        ? [['home', 'Accueil'], ['hub', 'Hub de Pairs'], ['communaute', '&#201;changes'], ['candidatures', 'Candidatures'], ['dash', 'Mon espace']]
+        ? [['home', 'Accueil'], ['hub', 'R\u00e9seau de Pairs'], ['communaute', '&#201;changes'], ['candidatures', 'Candidatures'], ['dash', 'Mon espace']]
         : [];
       document.getElementById('nav-links').innerHTML = pages.map(function (p) {
         return '<button class="nb' + (cur === p[0] ? ' on' : '') + '" onclick="go(\'' + p[0] + '\')">' + '' + p[1] + '</button>';
@@ -3903,7 +3885,7 @@
         '<div class="seclbl">Comment &#231;a marche</div>' +
         '<h2>Quatre &#233;tapes, une relation de pair &#224; pair</h2>' +
         '<div class="how-g">' +
-        '<div class="howi"><div class="hown">01</div><h4 style="margin-bottom:7px">Candidature par une association</h4><p style="font-size:14px">Les associations partenaires g&#232;rent et anonymisent les profils. Le Pairant navigue dans le Hub filtr&#233; sur son m&#233;tier exact et choisit un candidat sans biais.</p></div>' +
+        '<div class="howi"><div class="hown">01</div><h4 style="margin-bottom:7px">Candidature par une association</h4><p style="font-size:14px">Les associations partenaires g&#232;rent et anonymisent les profils. Le Pairant navigue dans le R&#233;seau filtr&#233; sur son m&#233;tier exact et choisit un candidat sans biais.</p></div>' +
         '<div class="howi"><div class="hown">02</div><h4 style="margin-bottom:7px">Entretien de validation</h4><p style="font-size:14px">Un entretien structur&#233; en visio avec le Pair&#233;. Le Pairant guide l\'&#233;change via une grille universelle : lexique m&#233;tier, m&#233;thode STAR, et &#233;carts normatifs.</p></div>' +
         '<div class="howi"><div class="hown">03</div><h4 style="margin-bottom:7px">Le Label <span class="fp-brand">Faire<i>pair</i></span></h4><p style="font-size:14px">Apr&#232;s un entretien r&#233;ussi, le Pair&#233; re&#231;oit une certification officielle par son pair. Son profil labellis&#233; gagne en cr&#233;dibilit&#233; aupr&#232;s des recruteurs.</p></div>' +
         '<div class="howi"><div class="hown">04</div><h4 style="margin-bottom:7px">Immersion (PMSMP)</h4><p style="font-size:14px">Pour finaliser l\'&#233;valuation sur le terrain, le Pairant peut g&#233;n&#233;rer directement une convention d\'immersion (PMSMP) sous l\'&#233;gide de France Travail.</p></div>' +
@@ -3994,8 +3976,8 @@
         '</div></div>' +
         '<div class="footer-col">' +
         '<h5>Plateforme</h5>' +
-        '<a onclick="go(\'hub\')">Hub de Pairs</a>' +
-        '<a onclick="go(\'candidatures\')">CVthèque labellisée</a>' +
+        '<a onclick="go(\'hub\')">R\u00e9seau de Pairs</a>' +
+        '<a onclick="go(\'candidatures\')">Syst\u00e8me de candidatures</a>' +
         '<a onclick="go(\'communaute\')">Échanges communauté</a>' +
         '<a onclick="go(\'entree-paire\')">Je suis Pairé</a>' +
         '</div>' +
@@ -4041,7 +4023,7 @@
       var u = Auth.me();
       var db = DB.get();
 
-      // ── Pairé : le Hub ne lui est pas utile, on le redirige vers son propre profil
+      // ── Pairé : le R\u00e9seau ne lui est pas utile, on le redirige vers son propre profil
       if (u && u.type === 'paire') {
         var ownProfil = null;
         for (var k = 0; k < db.profils.length; k++) { if (db.profils[k].id === u.pp_id) { ownProfil = db.profils[k]; break; } }
@@ -4051,7 +4033,7 @@
           '<div class="hub-w"><div style="max-width:560px;margin:60px auto;text-align:center">' +
           '<div style="font-size:40px;margin-bottom:18px">&#128100;</div>' +
           '<h2 style="margin-bottom:10px">Votre profil est en cours de cr&#233;ation</h2>' +
-          '<p style="font-size:14px;color:var(--mu)">Votre association partenaire est en train de renseigner votre profil. Vous serez notifi&#233;(e) d&#232;s qu\'il est disponible dans le Hub.</p>' +
+          '<p style="font-size:14px;color:var(--mu)">Votre association partenaire est en train de renseigner votre profil. Vous serez notifi&#233;(e) d&#232;s qu\'il est disponible dans le R&#233;seau.</p>' +
           '</div></div>';
         return;
       }
@@ -4144,7 +4126,7 @@
       var subtitle = u && u.type === 'pairant' ? 'Profils anonymis&#233;s de votre m&#233;tier — s&#233;lection uniquement bas&#233;e sur les comp&#233;tences.' : 'Tous les profils disponibles.';
       document.getElementById('s-hub').innerHTML =
         '<div class="hub-w">' +
-        '<div class="hubt"><div><h2>Hub de Pairs</h2><p style="font-size:14px">' + subtitle + '</p></div>' +
+        '<div class="hubt"><div><h2>R\u00e9seau de Pairs</h2><p style="font-size:14px">' + subtitle + '</p></div>' +
         (u && u.type === 'pairant' ? '<div class="fbar"><span style="color:var(--mu);font-size:12px">M&#233;tier filtr&#233; :</span><span class="fval">' + metier + '</span></div>' : '</div>') +
         (u && u.type === 'pairant' ? '</div>' : '') +
         (filterSel ? '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">' + filterSel + '</div>' : '') +
@@ -4183,7 +4165,7 @@
       if (isOwnProfil) {
         banner = '<div style="background:var(--tll);border:1px solid rgba(10,94,71,.2);border-radius:var(--r);padding:11px 15px;margin-bottom:13px;display:flex;align-items:center;gap:10px">' +
           '<span style="font-size:18px">&#128100;</span>' +
-          '<div style="font-size:13px;font-weight:500;color:var(--tl)">C\'est votre profil &#8212; visible de fa&#231;on anonyme dans le Hub</div></div>';
+          '<div style="font-size:13px;font-weight:500;color:var(--tl)">C\'est votre profil &#8212; visible de fa&#231;on anonyme dans le R&#233;seau</div></div>';
       } else if (isMyAssoProfile) {
         banner = '<div class="asso-reveal">' +
           '<div class="asso-reveal-ic">&#128274;</div>' +
@@ -4240,12 +4222,12 @@
         // Un Pairé ne peut pas appairage un autre Pairé
         ctaHtml = '';
       } else {
-        ctaHtml = '<div class="pcta"><div class="ctxt"><h4>Appairez-vous avec ce profil</h4><p>Les identit&#233;s seront r&#233;v&#233;l&#233;es une fois les deux parties d\'accord.</p></div><button class="bwh" onclick="reqApp(\'' + p.id + '\')">Demander l\'appairage &#8594;</button></div>';
+        ctaHtml = '<div class="pcta" id="app-cta"><div class="ctxt"><h4>Appairez-vous avec ce profil</h4><p>Les identit&#233;s seront r&#233;v&#233;l&#233;es une fois les deux parties d\'accord.</p></div><button class="bwh" onclick="showReqApp(\'' + p.id + '\')">Demander l\'appairage &#8594;</button></div>';
       }
 
       document.getElementById('s-profile').innerHTML =
         '<div class="pw">' +
-        '<div class="bk" onclick="go(\'hub\')">&larr; Retour au Hub</div>' +
+        '<div class="bk" onclick="go(\'hub\')">&larr; Retour au R\u00e9seau</div>' +
         banner +
         '<div class="ph"><div class="avl">' + avSvg(p, 70) + '</div><div>' +
         anonBadge +
@@ -4469,8 +4451,8 @@
         '</div>' +
         '<div class="d2">' +
         '<div class="card"><div class="dstt">Mes appairages</div>' +
-        (aps.length === 0 ? '<div class="empty"><div class="emico">&#9678;</div>Aucun appairage.<br><button class="bp bsm" style="margin-top:11px" onclick="go(\'hub\')">Explorer le Hub &#8594;</button></div>' : arows) +
-        '<button class="bo bfull" style="margin-top:12px;font-size:13px" onclick="go(\'hub\')">Explorer le Hub &#8594;</button></div>' +
+        (aps.length === 0 ? '<div class="empty"><div class="emico">&#9678;</div>Aucun appairage.<br><button class="bp bsm" style="margin-top:11px" onclick="go(\'hub\')">Explorer le R\u00e9seau &#8594;</button></div>' : arows) +
+        '<button class="bo bfull" style="margin-top:12px;font-size:13px" onclick="go(\'hub\')">Explorer le R\u00e9seau &#8594;</button></div>' +
         '<div style="display:flex;flex-direction:column;gap:13px">' +
         '<div class="card"><div class="dstt">Mon profil</div>' +
         '<div class="arow"><div class="avs"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#DFF3EC"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="14" fill="#0A5E47" font-weight="600">' + (u.prenom[0]+u.nom[0]) + '</text></svg></div><div style="flex:1"><div class="anm">' + u.prenom + ' ' + u.nom + '</div><div class="asb">' + u.metier + ' &middot; ' + u.entreprise + '</div></div></div></div>' +
@@ -4519,7 +4501,7 @@
         '<button class="bp bfull" style="margin-top:12px;font-size:13px" onclick="cDat={};cStep=1;go(\'create\')">+ Cr&#233;er un profil Pair&#233;</button></div>' +
         '<div class="card"><div class="dstt">Parcours type</div><ul style="padding-left:20px;font-size:13px;color:var(--tx);line-height:1.6;margin-top:10px">' +
         '<li style="margin-bottom:8px"><strong>1. Renseignement du profil :</strong> Informations de base, biographie et comp&#233;tences.</li>' +
-        '<li style="margin-bottom:8px"><strong>2. Mise en relation :</strong> Le profil est anonymis&#233; sur le Hub en attendant qu\'un Pairant demande l\'appairage.</li>' +
+        '<li style="margin-bottom:8px"><strong>2. Mise en relation :</strong> Le profil est anonymis&#233; sur le R&#233;seau en attendant qu\'un Pairant demande l\'appairage.</li>' +
         '<li><strong>3. Appairage &amp; Label :</strong> Entretien de validation des comp&#233;tences techniques m&#233;tier.</li>' +
         '</ul></div></div></div></div>';
     }
@@ -4536,8 +4518,8 @@
       if (cStep === 1) {
         fc = '<div class="fr"><div class="fg"><label>M&#233;tier (exact)</label><input id="cp-mt" placeholder="ex : Ing&#233;nieur" value="' + (cDat.metier || '') + '"></div><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="cp-ex" placeholder="8" value="' + (cDat.exp || '') + '" min="1" max="50"></div></div>' +
           '<div class="fg"><label>Secteur d\'activit&#233;</label><input id="cp-sc" placeholder="ex : Soins intensifs" value="' + (cDat.secteur || '') + '"></div>' +
-          '<div class="fr"><div class="fg"><label>Pays d\'origine</label><input id="cp-py" placeholder="ex : Syrie" value="' + (cDat.pays || '') + '"></div><div class="fg"><label>Pr&#233;nom (confidentiel)</label><input id="cp-pr" placeholder="Karim" value="' + (cDat.prenom || '') + '"></div></div>' +
-          '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Al-Rashid" value="' + (cDat.nom || '') + '"></div>' +
+          '<div class="fr"><div class="fg"><label>Pays d\'origine</label><input id="cp-py" placeholder="ex : Ukraine" value="' + (cDat.pays || '') + '"></div><div class="fg"><label>Pr&#233;nom (confidentiel)</label><input id="cp-pr" placeholder="Elena" value="' + (cDat.prenom || '') + '"></div></div>' +
+          '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Ivanova" value="' + (cDat.nom || '') + '"></div>' +
           '<div class="fg"><label>Langues parl&#233;es</label><input id="cp-lg" placeholder="Arabe, Anglais, Fran&#231;ais B1" value="' + (cDat.langues || '') + '"></div>';
       } else if (cStep === 2) {
         fc = '<p style="font-size:13px;margin-bottom:13px;color:var(--mu)">D\u00e9crivez le parcours de mani\u00e8re simple &mdash; comme si vous le racontiez \u00e0 quelqu\'un.</p>' +
@@ -4631,7 +4613,7 @@
       var col = cols[db.profils.length % cols.length];
       db.profils.push({ id: 'pp_' + Date.now(), by: u.id, prenom_c: cDat.prenom || '', nom_c: cDat.nom || '', metier: cDat.metier, exp: cDat.exp, secteur: cDat.secteur, pays: cDat.pays, langues: langues, bio: cDat.bio, comp: cDat.comp || [], ecarts: ecarts, status: 'en_attente', label_by: null, label_date: null, col: col });
       DB.save(db); cDat = {}; cStep = 1;
-      toast('Profil Pair&#233; cr&#233;&#233; et visible dans le Hub !', 'ok'); go('dash');
+      toast('Profil Pair&#233; cr&#233;&#233; et visible dans le R&#233;seau !', 'ok'); go('dash');
     }
 
     // ═══════════════════════════════════
@@ -4643,39 +4625,45 @@
     // CANDIDATURES (CVthèque labellisée)
     // ═══════════════════════════════════
     function rCandidatures() {
-      var db = DB.get();
-      var labelled = db.profils.filter(function (p) { return p.status === 'certifie'; });
       var u = Auth.me();
-      var cards = labelled.map(function (p) {
-        var sks = p.comp.slice(0, 4).map(function (c) { return '<span class="chip">' + c.n + '</span>'; }).join('');
-        return '<div class="cand-c">' +
-          '<div class="cand-top"><div class="avl">' + avSvg(p, 60) + '</div>' +
-          '<div><div style="font-size:15px;font-weight:500;margin-bottom:2px">' + p.prenom_c + ' ' + p.nom_c + '</div>' +
-          '<div style="font-size:13px;color:var(--mu)">' + p.metier + ' &middot; ' + p.exp + ' ans d\'expérience</div>' +
-          '<div style="font-size:12px;color:var(--mu);margin-top:2px">' + p.secteur + ' &middot; ' + p.pays + '</div></div></div>' +
-          '<div class="label-seal" style="margin-bottom:12px">&#9672; Label <span class="fp-brand">Faire<i>pair</i></span> &middot; ' + p.label_date + '</div>' +
-          '<div style="font-size:12px;color:var(--mu);margin-bottom:8px">Via <strong>' + p.label_by + '</strong></div>' +
-          '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px">' + sks + '</div>' +
-          '<div style="display:flex;gap:8px">' +
-          '<button class="bp bsm bfull" onclick="alert(\'En production : cette action ouvrirait un formulaire de prise de contact s\\\'envoyant \\u00e0 Fairepair, qui transmet la mise en relation.\')">Prendre contact</button>' +
-          '<button class="bo bsm" onclick="go(\'profile\',\'' + p.id + '\')">Voir le profil</button>' +
-          '</div></div>';
-      }).join('');
-      var empty = labelled.length === 0 ?
-        '<div class="empty" style="padding:48px"><div class="emico">&#9672;</div>' +
-        '<div style="font-weight:500;margin-bottom:6px">Aucune candidature labellis&#233;e pour l\'instant</div>' +
-        '<div style="font-size:13px">Les profils Pair&#233;s apparaissent ici apr&#232;s avoir obtenu leur Label <span class="fp-brand">Faire<i>pair</i></span> lors d\'un entretien de validation.</div></div>' : '';
+      var db = DB.get();
+      var isPaire = u && u.type === 'paire';
+      var isCertifie = false;
+      var pp = null;
+      if (isPaire) {
+        if (u.pp_id) { for (var i = 0; i < db.profils.length; i++) { if (db.profils[i].id === u.pp_id) { pp = db.profils[i]; break; } } }
+        if (!pp) { for (var j = 0; j < db.profils.length; j++) { if (db.profils[j].prenom_c === u.prenom) { pp = db.profils[j]; break; } } }
+        if (pp && pp.status === 'certifie') isCertifie = true;
+      }
+      var cHtml = '';
+      if (!isPaire) {
+        cHtml = '<div class="empty" style="padding:48px"><div class="emico">&#128188;</div>' +
+                '<div style="font-weight:500;margin-bottom:6px">Espace r\u00e9serv\u00e9 aux Pair\u00e9s labellis\u00e9s</div>' +
+                '<div style="font-size:13px">Ce syst\u00e8me de candidatures est r\u00e9serv\u00e9 aux candidats ayant obtenu leur Label Fairepair.</div></div>';
+      } else if (!isCertifie) {
+        cHtml = '<div class="empty" style="padding:48px"><div class="emico">&#128274;</div>' +
+                '<div style="font-weight:500;margin-bottom:6px">Acc\u00e8s restreint</div>' +
+                '<div style="font-size:13px">Vous devez obtenir le Label Fairepair apr\u00e8s votre entretien d\'appairage pour acc\u00e9der aux offres dans votre domaine.</div></div>';
+      } else {
+        var metier = pp ? pp.metier : 'votre domaine';
+        var offres = [
+          { titre: 'Poste en ' + metier, ent: 'Partenaire Industriel', lieu: 'R\u00e9gion Parisienne', desc: 'Nous recherchons un profil valid\u00e9 par Fairepair pour int\u00e9grer nos \u00e9quipes.' },
+          { titre: 'Opportunit\u00e9 ' + metier, ent: 'R\u00e9seau Fairepair', lieu: 'T\u00e9l\u00e9travail / Hybride', desc: 'Offre r\u00e9serv\u00e9e aux talents labellis\u00e9s. Processus de recrutement acc\u00e9l\u00e9r\u00e9.' }
+        ];
+        var cards = offres.map(function(o) {
+          return '<div class="cand-c" style="padding:16px"><div style="font-weight:500;font-size:15px;margin-bottom:4px">' + o.titre + '</div>' +
+                 '<div style="font-size:13px;color:var(--tl);margin-bottom:8px;font-weight:500">' + o.ent + ' &middot; ' + o.lieu + '</div>' +
+                 '<div style="font-size:13px;color:var(--tx);margin-bottom:14px">' + o.desc + '</div>' +
+                 '<button class="bp bsm bfull" onclick="toast(\'Candidature envoy\u00e9e avec succ\u00e8s !\', \'ok\')">Postuler</button></div>';
+        }).join('');
+        cHtml = '<div class="cand-g">' + cards + '</div>';
+      }
       document.getElementById('s-candidatures').innerHTML =
         '<div class="cand-w">' +
         '<div style="margin-bottom:1.8rem">' +
-        '<h2 style="margin-bottom:6px">CVth&#232;que Labellised</h2>' +
-        '<p style="font-size:14px">Candidats certifi&#233;s par leurs pairs professionnels &#8212; acc&#232;s gratuit. Contactez <span class="fp-brand">Faire<i>pair</i></span> si vous embauchez.</p></div>' +
-        (labelled.length > 0 ? '<div class="cand-g">' + cards + '</div>' : empty) +
-        '<div style="background:var(--tl);border-radius:var(--rl);padding:28px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">' +
-        '<div><div style="color:#fff;font-size:16px;font-weight:500;margin-bottom:4px">Vous recrutez dans votre secteur ?</div>' +
-        '<div style="color:rgba(255,255,255,.7);font-size:13px">En recrutant un profil certifi&#233; <span class="fp-brand">Faire<i>pair</i></span>, le don de succ&#232;s correspondant permet de financer nos prochains accompagnements.</div></div>' +
-        '<button class="bwh" onclick="openModal(\'login\')">Nous contacter</button>' +
-        '</div></div>';
+        '<h2 style="margin-bottom:6px">Syst\u00e8me de candidatures</h2>' +
+        '<p style="font-size:14px">Acc\u00e9dez aux offres exclusives dans votre domaine apr\u00e8s l\'obtention de votre label.</p></div>' +
+        cHtml + '</div>';
     }
 
     // ═══════════════════════════════════
@@ -4769,11 +4757,11 @@
           '<div class="fr"><div class="fg"><label>Pr&#233;nom</label><input id="ep-fn" placeholder="Votre pr&#233;nom"></div><div class="fg"><label>Nom</label><input id="ep-ln" placeholder="Votre nom"></div></div>' +
           '<div class="fg"><label>Email</label><input type="email" id="ep-em" placeholder="votre@email.com"></div>' +
           '<div class="fg"><label>Votre m&#233;tier</label><input id="ep-mt" placeholder="ex : Ing&#233;nieur, Cuisinier, &#201;lectricien&#8230;"></div>' +
-          '<div class="fr"><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="ep-ex" placeholder="8" min="1"></div><div class="fg"><label>Pays d\'origine</label><input id="ep-py" placeholder="ex : Syrie"></div></div>' +
+          '<div class="fr"><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="ep-ex" placeholder="8" min="1"></div><div class="fg"><label>Pays d\'origine</label><input id="ep-py" placeholder="ex : Ukraine"></div></div>' +
           '<div class="fg"><label>Niveau de fran&#231;ais</label>' +
           '<select id="ep-fr"><option>A1 — D&#233;butant</option><option>A2</option><option selected>B1 — Interm&#233;diaire</option><option>B2</option><option>C1 — Avanc&#233;</option><option>C2 — Courant</option></select></div>' +
           '<div style="background:var(--aml);border-radius:var(--r);padding:11px 13px;font-size:12px;color:var(--am);margin-bottom:14px">' +
-          '&#9432; Votre profil sera examin&#233; par notre &#233;quipe avant d\'&#234;tre activ&#233; dans le Hub (sous 72h).' +
+          '&#9432; Votre profil sera examin&#233; par notre &#233;quipe avant d\'&#234;tre activ&#233; dans le R&#233;seau (sous 72h).' +
           '</div>' +
           '<button class="bp bfull" onclick="submitEpDirect()">Envoyer ma demande d\'inscription &#8594;</button>' +
           '</div>';
@@ -4800,8 +4788,8 @@
       // Statut global
       var statut = pp ? pp.status : 'en_attente';
       var steps = [
-        { done: true, active: false, ic: '&#10003;', title: 'Profil créé', sub: 'Votre fiche est visible dans le Hub de Pairs de manière anonymisée.' },
-        { done: statut !== 'en_attente', active: statut === 'en_attente', ic: statut !== 'en_attente' ? '&#10003;' : '&#8942;', title: 'En attente d\'appairage', sub: statut === 'en_attente' ? 'Un Pairant de votre métier va choisir votre profil dans le Hub.' : 'Un Pairant a choisi votre profil. Entretien en cours.' },
+        { done: true, active: false, ic: '&#10003;', title: 'Profil créé', sub: 'Votre fiche est visible dans le R\u00e9seau de Pairs de manière anonymisée.' },
+        { done: statut !== 'en_attente', active: statut === 'en_attente', ic: statut !== 'en_attente' ? '&#10003;' : '&#8942;', title: 'En attente d\'appairage', sub: statut === 'en_attente' ? 'Un Pairant de votre métier va choisir votre profil dans le R\u00e9seau.' : 'Un Pairant a choisi votre profil. Entretien en cours.' },
         { done: statut === 'certifie', active: statut === 'appaire', ic: statut === 'certifie' ? '&#10003;' : '3', title: 'Entretien de validation', sub: statut === 'appaire' ? 'Entretien planifié avec votre Pairant. La traduction en direct sera disponible.' : (statut === 'certifie' ? 'Entretien réalisé avec succès.' : 'En attente de l\'appairage.') },
         { done: statut === 'certifie', active: false, ic: '&#9672;', title: 'Label <span class="fp-brand">Faire<i>pair</i></span>', sub: statut === 'certifie' ? ('Obtenu le ' + pp.label_date + ' — certifié par ' + pp.label_by) : 'Vous recevez le label après validation de vos compétences par votre pair.' }
       ];
@@ -4822,7 +4810,7 @@
         '<div style="font-size:13px;font-weight:500;color:var(--tl);margin-bottom:2px">Entretien avec votre Pairant</div>' +
         '<div style="font-size:12px;color:var(--tl)">' + new Date(myAp.date_e).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' &mdash; Traduction en direct disponible</div></div>' +
         '<button class="bp bfull" style="font-size:13px" onclick="go(\'entretien\')">Rejoindre l\'entretien</button>' :
-        (statut === 'certifie' ? '<button class="bp bfull" style="font-size:13px" onclick="go(\'candidatures\')">Voir mon profil dans la CVth&#232;que &#8594;</button>' :
+        (statut === 'certifie' ? '<button class="bp bfull" style="font-size:13px" onclick="go(\'candidatures\')">Voir les offres dans mon domaine &#8594;</button>' :
           '<div class="empty" style="padding:18px 0"><div class="emico">&#128197;</div>Aucun entretien planifi&#233;.</div>');
       document.getElementById('s-dash').innerHTML =
         '<div class="dw">' +
@@ -5051,7 +5039,7 @@
         privacyHtml =
           '<div class="set-sec">' +
           '<div class="dstt">Confidentialit&#233;</div>' +
-          '<div class="set-row"><div><div class="set-lbl">Profil visible dans le Hub</div><div class="set-sub">D&#233;sactiver pour mettre votre profil en pause temporairement</div></div>' + tog('profilPub') + '</div>' +
+          '<div class="set-row"><div><div class="set-lbl">Profil visible dans le R\u00e9seau</div><div class="set-sub">D&#233;sactiver pour mettre votre profil en pause temporairement</div></div>' + tog('profilPub') + '</div>' +
           '<div class="set-row"><div><div class="set-lbl">Partager mes statistiques anonymis&#233;es</div><div class="set-sub">Contribue &#224; l\'am&#233;lioration de la plateforme</div></div><input type="checkbox" checked style="width:auto;cursor:pointer"></div>' +
           '</div>';
       }
