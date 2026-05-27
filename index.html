@@ -4515,14 +4515,21 @@
       var sdots = steps.map(function (s, i) { return (i > 0 ? '<div class="fline"></div>' : '') + '<div class="fst' + (cStep === i + 1 ? ' on' : '') + '"><span>' + (i + 1) + '</span>' + s + '</div>'; }).join('');
       var fc = '';
       if (cStep === 1) {
-        fc = '<div class="fr"><div class="fg"><label>M&#233;tier (exact)</label><input id="cp-mt" placeholder="ex : Ing&#233;nieur" value="' + (cDat.metier || '') + '"></div><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="cp-ex" placeholder="8" value="' + (cDat.exp || '') + '" min="1" max="50"></div></div>' +
-          '<div class="fg"><label>Secteur d\'activit&#233;</label><input id="cp-sc" placeholder="ex : Automobile" value="' + (cDat.secteur || '') + '"></div>' +
-          '<div class="fr"><div class="fg"><label>Pays d\'origine</label><input id="cp-py" placeholder="ex : Ukraine" value="' + (cDat.pays || '') + '"></div><div class="fg"><label>Pr&#233;nom (confidentiel)</label><input id="cp-pr" placeholder="Elena" value="' + (cDat.prenom || '') + '"></div></div>' +
-          '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Ivanova" value="' + (cDat.nom || '') + '"></div>' +
-          '<div class="fg"><label>Langues parl&#233;es</label><input id="cp-lg" placeholder="Arabe, Anglais, Fran&#231;ais B1" value="' + (cDat.langues || '') + '"></div>';
+        var dMt = cDat.metier || 'Ing\u00e9nieur m\u00e9canique';
+        var dEx = cDat.exp || '8';
+        var dSc = cDat.secteur || 'Automobile';
+        var dPy = cDat.pays || 'Ukraine';
+        var dPr = cDat.prenom || 'Elena';
+        var dNm = cDat.nom || 'Ivanova';
+        var dLg = cDat.langues || 'Ukrainien, Anglais, Fran\u00e7ais B1';
+        fc = '<div class="fr"><div class="fg"><label>M&#233;tier (exact)</label><input id="cp-mt" placeholder="ex : Ing&#233;nieur" value="' + dMt + '"></div><div class="fg"><label>Ann&#233;es d\'exp&#233;rience</label><input type="number" id="cp-ex" placeholder="8" value="' + dEx + '" min="1" max="50"></div></div>' +
+          '<div class="fg"><label>Secteur d\'activit&#233;</label><input id="cp-sc" placeholder="ex : Automobile" value="' + dSc + '"></div>' +
+          '<div class="fr"><div class="fg"><label>Pays d\'origine</label><input id="cp-py" placeholder="ex : Ukraine" value="' + dPy + '"></div><div class="fg"><label>Pr&#233;nom (confidentiel)</label><input id="cp-pr" placeholder="Elena" value="' + dPr + '"></div></div>' +
+          '<div class="fg"><label>Nom (confidentiel)</label><input id="cp-nm" placeholder="Ivanova" value="' + dNm + '"></div>' +
+          '<div class="fg"><label>Langues parl&#233;es</label><input id="cp-lg" placeholder="Arabe, Anglais, Fran&#231;ais B1" value="' + dLg + '"></div>';
       } else if (cStep === 2) {
         var defBio = "Dipl\u00f4m\u00e9(e) dans mon domaine, j'ai travaill\u00e9 plusieurs ann\u00e9es dans mon pays d'origine o\u00f9 j'ai acquis une solide exp\u00e9rience sur le terrain. J'ai eu l'opportunit\u00e9 de piloter divers projets et de collaborer avec des \u00e9quipes techniques.\n\nActuellement en France, je souhaite m'int\u00e9grer rapidement et mettre \u00e0 profit mes comp\u00e9tences. Je suis tr\u00e8s motiv\u00e9(e) pour rejoindre une \u00e9quipe dynamique.";
-        var bioVal = cDat.bio !== undefined ? cDat.bio : defBio;
+        var bioVal = cDat.bio ? cDat.bio : defBio;
         fc = '<p style="font-size:13px;margin-bottom:13px;color:var(--mu)">D\u00e9crivez le parcours de mani\u00e8re simple &mdash; comme si vous le racontiez \u00e0 quelqu\'un.</p>' +
           '<div class="fg"><label>Biographie narrative (3-4 paragraphes)</label><textarea id="cp-bio" style="min-height:210px;font-size:13px;line-height:1.75" placeholder="D&#233;crivez le parcours, les r&#233;alisations, les responsabilit&#233;s&#8230;">' + bioVal + '</textarea></div>';
       } else {
