@@ -3563,9 +3563,12 @@
     function navRender() {
       var u = Auth.me();
       // Visiteur : seul l'accueil est visible dans la nav
-      var pages = u
-        ? [['home', 'Accueil'], ['hub', 'R\u00e9seau de Pairs'], ['communaute', '&#201;changes'], ['candidatures', 'Candidatures'], ['dash', 'Mon espace']]
-        : [];
+      var pages = [];
+      if (u) {
+        pages.push(['home', 'Accueil'], ['hub', 'R\u00e9seau de Pairs'], ['communaute', '&#201;changes']);
+        if (u.type === 'paire') pages.push(['candidatures', 'Candidatures']);
+        pages.push(['dash', 'Mon espace']);
+      }
       document.getElementById('nav-links').innerHTML = pages.map(function (p) {
         return '<button class="nb' + (cur === p[0] ? ' on' : '') + '" onclick="go(\'' + p[0] + '\')">' + '' + p[1] + '</button>';
       }).join('');
