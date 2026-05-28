@@ -3968,6 +3968,8 @@
       );
     }
     function buildFooter() {
+      var u = Auth.me();
+      var candLink = (u && u.type === 'paire') ? '<a onclick="go(\'candidatures\')">Syst\u00e8me de candidatures</a>' : '';
       return '<footer>' +
         '<div class="footer-main">' +
         '<div class="footer-brand">' +
@@ -3980,7 +3982,7 @@
         '<div class="footer-col">' +
         '<h5>Plateforme</h5>' +
         '<a onclick="go(\'hub\')">R\u00e9seau de Pairs</a>' +
-        '<a onclick="go(\'candidatures\')">Syst\u00e8me de candidatures</a>' +
+        candLink +
         '<a onclick="go(\'communaute\')">Échanges communauté</a>' +
         '<a onclick="go(\'entree-paire\')">Je suis Pairé</a>' +
         '</div>' +
