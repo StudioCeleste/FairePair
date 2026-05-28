@@ -4653,10 +4653,19 @@
                 '<div style="font-weight:500;margin-bottom:6px">Acc\u00e8s restreint</div>' +
                 '<div style="font-size:13px">Vous devez obtenir le Label Fairepair apr\u00e8s votre entretien d\'appairage pour acc\u00e9der aux offres dans votre domaine.</div></div>';
       } else {
-        var metier = pp ? pp.metier : 'votre domaine';
-        var offres = [
-          { titre: 'Poste en ' + metier, ent: 'Partenaire Industriel', lieu: 'R\u00e9gion Parisienne', desc: 'Nous recherchons un profil valid\u00e9 par Fairepair pour int\u00e9grer nos \u00e9quipes.' },
-          { titre: 'Opportunit\u00e9 ' + metier, ent: 'R\u00e9seau Fairepair', lieu: 'T\u00e9l\u00e9travail / Hybride', desc: 'Offre r\u00e9serv\u00e9e aux talents labellis\u00e9s. Processus de recrutement acc\u00e9l\u00e9r\u00e9.' }
+        var metier = pp ? pp.metier : 'Ing\u00e9nieur m\u00e9canique';
+        var isMeca = metier.toLowerCase().includes('m\u00e9cani') || metier.toLowerCase().includes('ing\u00e9nieur');
+        
+        var offres = isMeca ? [
+          { titre: 'Ing\u00e9nieur(e) Conception ' + (metier.includes('m\u00e9cani') ? 'M\u00e9canique' : metier) + ' (CATIA V5)', ent: 'Renault Group', lieu: 'Guyancourt (78) &middot; Hybride', desc: 'Dans le cadre du d\u00e9veloppement de nos nouveaux v\u00e9hicules hybrides, nous recherchons un(e) expert(e) en conception. Processus de recrutement acc\u00e9l\u00e9r\u00e9 gr\u00e2ce &#224; votre Label Fairepair.' },
+          { titre: 'Projeteur / ' + metier + ' (SolidWorks)', ent: 'Valeo', lieu: 'Cr\u00e9teil (94)', desc: 'Rejoignez notre p\u00f4le R&D Syst\u00e8mes Thermiques. Nous valorisons fortement les profils internationaux dot\u00e9s d\'une solide exp\u00e9rience technique sur le terrain.' },
+          { titre: 'Chef de Projet / ' + metier, ent: 'Alstom', lieu: 'Saint-Ouen (93)', desc: 'Pilotage de projets d\'int\u00e9gration pour nos nouvelles rames. Poste ouvert aux talents internationaux (anglais courant, fran\u00e7ais B1 minimum).' },
+          { titre: metier + ' - P\u00f4le M\u00e9thodes', ent: 'Safran Aircraft Engines', lieu: 'Villaroche (77)', desc: 'Soutien &#224; la production et optimisation des gammes de fabrication. Une exp\u00e9rience pr\u00e9alable en milieu industriel strict est un atout d\u00e9cisif.' },
+          { titre: 'Consultant(e) ' + metier, ent: 'Alten', lieu: 'Boulogne-Billancourt (92)', desc: 'Mission de conseil et d\'ing\u00e9nierie pour de grands comptes de l\'automobile et de l\'a\u00e9ronautique. Votre Label Fairepair vous exempte du premier test technique.' }
+        ] : [
+          { titre: 'Poste de ' + metier, ent: 'Renault Group', lieu: 'Guyancourt (78)', desc: 'Nous recherchons un profil valid\u00e9 par Fairepair pour int\u00e9grer nos \u00e9quipes de production et d\'ing\u00e9nierie.' },
+          { titre: 'Opportunit\u00e9 : ' + metier, ent: 'Valeo', lieu: 'Cr\u00e9teil (94)', desc: 'Rejoignez notre p\u00f4le R&D. Processus de recrutement acc\u00e9l\u00e9r\u00e9 r\u00e9serv\u00e9 aux talents labellis\u00e9s.' },
+          { titre: metier + ' (H/F)', ent: 'Alstom', lieu: 'Saint-Ouen (93)', desc: 'Poste ouvert aux talents internationaux. Votre Label Fairepair remplace notre test d\'&#233;valuation initial.' }
         ];
         var cards = offres.map(function(o) {
           return '<div class="cand-c" style="padding:16px"><div style="font-weight:500;font-size:15px;margin-bottom:4px">' + o.titre + '</div>' +
